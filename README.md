@@ -32,7 +32,7 @@ The exposition of ideas is aimed to be as direct as possible.
 
 ## Vision
 
-### First Principles Thinking
+### First principles thinking
 
 Our view of the world used to be different.
 Zeus caused thunder.
@@ -69,7 +69,7 @@ There is a difference between being able to build parts of a car and being able 
 The difference is, among other things, in the questions you ask.
 Our goal is a worldview which compiles and runs correctly.
 
-### Value-per-page optimization
+### Value optimization
 
 As you gain more knowledge, each new piece of information you encounter becomes less valuable.
 Twenty percent of the theory often brings eighty percent of the benefit.
@@ -152,6 +152,8 @@ If we don't try, they will never be achieved.
 
 ## Society
 
+### Bias
+
 Agents with different utility functions have an incentive to hide or distort the truth from each other.
 Marketing is an example of a financial incentive.
 Propaganda is an example of a state governance incentive.
@@ -167,7 +169,7 @@ A metaphysical theory of everything would happen.
 Anything which depends on empirical data is hard to verify.
 Deduction from axioms can be verified easily.
 
-## Science
+### Science
 
 Some people claim to base their worldview on science.
 This is impossible, since science is incomplete.
@@ -185,7 +187,7 @@ Yet still it is clear to anyone that playing Russian roulette is not a good choi
 Lack of deterministic knowledge about X is not a reason to stop thinking about X.
 There are no proven and unproven statements, instead there are models and a probability distribution on them.
 
-## Intellectuals
+### Intellectuals
 
 Arguments are not isolated.
 We can't talk about anything without talking about the entire universe.
@@ -194,7 +196,7 @@ Intellectuals are biased when it comes to topics they talk about; there is alway
 Once some public discussion comes near the axioms the topic is usually switched to something else.
 To reach any clear conclusion it is necessary to talk about the fundamentals.
 
-## Spirituality
+### Spirituality
 
 There exists an eternal structure which is the cause of all phenomena and permeates all being.
 You can, at least in part, become one with that structure and in that way achieve immortality.
@@ -259,7 +261,7 @@ Some additional desiderata which are fulfilled:
 
 A list of references can be found here: [bibliography.md](https://github.com/taosourcerer/source/blob/master/bibliography.md)
 
-## Related
+Related:
 
 * [The Fabric of Reality](https://en.wikipedia.org/wiki/The_Fabric_of_Reality)
 * [The Human Evasion](https://gist.github.com/jessedhillon/4333047)
