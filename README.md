@@ -9,7 +9,7 @@ In doing so, we are constructing a philosophical system to unify all theoretical
 This system also provides an organizing principle for creating new knowledge.
 There is a natural way in which all of knowledge gracefully folds together.
 The number of reasonable ways of thinking about the world is limited.
-It is possible to construct a system which is watertight.
+It is possible to construct a system which is optimal.
 
 The output this project is a document: [source.pdf](https://github.com/taosourcerer/source/blob/master/source.pdf)
 The document presents a worldview.
@@ -29,9 +29,6 @@ Where possible, the examples should be visual.
 Where possible, code snippets should be provided.
 The language used in the document is aimed to be simple and short.
 The exposition of ideas is aimed to be as direct as possible.
-
-This is a public version of the project and as such it contains only the first chapter.
-Other chapters are being developed in a private repo.
 
 ## Vision
 
