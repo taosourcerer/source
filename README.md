@@ -99,7 +99,7 @@ Source creates a structure which connects all of knowledge.
 This structure offers a natural traversal of knowledge, a flowing sequence of questions and answers.
 It provides a way to systematically propagate implications.
 
-### Inferential distance
+### Inferential distance reduction
 
 Our species lived through a number of revolutions in information technology.
 The first one was the invention of language.
