@@ -30,6 +30,8 @@ Where possible, code snippets should be provided.
 The language used in the document is aimed to be simple and short.
 The exposition of ideas is aimed to be as direct as possible.
 
+You are free to send any feedback to taosourcerer@protonmail.com
+
 ## Vision
 
 ### First principles thinking
@@ -260,3 +262,7 @@ Some additional desiderata which are fulfilled:
 ## References
 
 A list of references can be found here: [bibliography.md](https://github.com/taosourcerer/source/blob/master/bibliography.md)
+
+## Support
+
+BTC: 198L5jAWXBm5DBmVaNYN15b3SAMn5iao8z
