@@ -260,13 +260,3 @@ Some additional desiderata which are fulfilled:
 ## References
 
 A list of references can be found here: [bibliography.md](https://github.com/taosourcerer/source/blob/master/bibliography.md)
-
-Related:
-
-* [The Fabric of Reality](https://en.wikipedia.org/wiki/The_Fabric_of_Reality)
-* [The Human Evasion](https://gist.github.com/jessedhillon/4333047)
-* [Original seeing](https://www.lesswrong.com/posts/SA79JMXKWke32A3hG/original-seeing)
-* [Research debt](https://distill.pub/2017/research-debt/)
-* [Thing Explainer](https://xkcd.com/thing-explainer/)
-* [From Nand to Tetris](https://www.nand2tetris.org/)
-* [Foundation series](https://en.wikipedia.org/wiki/Foundation_series)

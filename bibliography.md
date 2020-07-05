@@ -7,6 +7,12 @@ This work is inspired mostly by the following works:
 * _Good and Real_ - Gary Drescher
 * _Gödel, Escher, Bach_ - Douglas Hofstadter
 * _Superintelligence_ - Nick Bostrom 
+* _The Human Evasion_ - Celia Green
+
+Related ideas:
+
+* [Original seeing](https://www.lesswrong.com/posts/SA79JMXKWke32A3hG/original-seeing)
+* [Research debt](https://distill.pub/2017/research-debt/)
 
 Per chapter:
 
