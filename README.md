@@ -5,11 +5,11 @@
 A perfect reasoner could deduce some things about the world even before receiving any empirical data.
 How would that _prior model_ look like?
 Our goal is to answer that question.
-In doing so, we are constructing a philosophical system to unify all theoretical knowledge.
-This system also provides an organizing principle for creating new knowledge.
+In doing so, we are constructing a philosophical system which unifies all theoretical knowledge.
 There is a natural way in which all of knowledge gracefully folds together.
 The number of reasonable ways of thinking about the world is limited.
 It is possible to construct a system which is optimal.
+This system provides an organizing principle for creating new knowledge.
 
 The output this project is a document: [source.pdf](https://github.com/taosourcerer/source/blob/master/source.pdf)
 The document presents a worldview.
@@ -32,16 +32,18 @@ The exposition of ideas is aimed to be as direct as possible.
 
 ## Vision
 
+### First Principles Thinking
+
 Our view of the world used to be different.
 Zeus caused thunder.
 The Earth was flat, and it was the center of the universe.
 Fire was caused by a substance called [phlogiston](https://en.wikipedia.org/wiki/Phlogiston_theory).
 Light travelled through a substance called [aether](https://en.wikipedia.org/wiki/Luminiferous_aether).
-Everything we think we know, could turn out to be false.
-Our brains are built from unreliable hardware and our intuition is producing unreliable beliefs and predictions.
+Everything we think we know could turn out to be false.
+Our brains are built from unreliable hardware and they produce unreliable beliefs and predictions.
 Could have we avoided the mistakes of the past?
 What is the optimal algorithm for generating knowledge?
-Start with the most basic and sound of assumptions, and build from that.
+Start with the most basic assumptions, and build from that.
 It turns out, a lot can be done that way.
 Thinking from first principles leads to a change of perspective in which previously unreachable ideas become thinkable.
 What seemed like a paradox suddenly becomes dissolved. 
@@ -49,6 +51,8 @@ As when the work of [Euclid](https://en.wikipedia.org/wiki/Geometric_series#Eucl
 Mathematical formalization is crucial in order to solve hard problems.
 This is what makes _Source_ different from most other philosophical texts, as does inclusion of working source code.
 Our goal is to transmute philosophy into math and code.
+
+### Unification
 
 Our civilization has been around for about 10,000 years.
 During that period, a lot of knowledge has been accumulated.
@@ -65,64 +69,76 @@ There is a difference between being able to build parts of a car and being able 
 The difference is, among other things, in the questions you ask.
 Our goal is a worldview which compiles and runs correctly.
 
+### Value-per-page optimization
+
 As you gain more knowledge, each new piece of information you encounter becomes less valuable.
 Twenty percent of the theory often brings eighty percent of the benefit.
 Those insights are usually concentrated at the introductory level, but in many cases they are widely scattered and obscure.
 Our goal is to stick only with the most important insights and to collect them in one place.
 This way the document tries to provide the highest value per page while still being easy to understand.
 
+### Memory compression
+
 Since our memory is not perfect and we have a limited amount of it, knowledge decays.
-In order to solve that problem, knowledge needs to become compressed into key axioms and insights.
-Or to go even further, it can be compressed into knowing the right questions to ask and an intuition about the direction in which to move in order to deduce the answer.
+In order to solve that problem, knowledge needs to be compressed into key axioms and insights.
+Or it can be compressed into knowing the right questions to ask and an intuition about the direction in which to move in order to deduce the answer.
 That way, even if something is forgotten it can be reinvented.
 You don't understand X if you can't write a program which does X.
 You also don't understand X if you can't deduce X from first principles.
 Some insights are so elegant and deep that by the sheer force of their beauty they cannot be forgetten.
 Our goal is to ask the right questions and to build good intuition.
 
-The conclusions reached here should not depend on any specific law of physics.
-It is something an artificial general intelligence could think up before ever _opening their eyes_, with no empirical data.
-I think, therefore I am... a structure embedded in a larger structure, an agent embedded in a universe which supports the existence of bounded-tape Turing machines.
-Our goal is a metaphysical theory of everything.
-
-There are insights which radically change our view the world.
-Some even change our view about the basic building blocks of reality, or about which ways of thinking make sense.
-We could call such insights ontological refactoring.
-Those most important insights include quantum mechanics, the concept of spacetime, but also the concept of mathematical proof and the idea of computation.
-Playing with _Source_, you suddenly find yourself asking questions like: is there a string which can't be computed by a Turing machine?
-Not just because theoretical computer science is beautiful but because you _need_ the answer to solve some particular problem posed by the theory.
-Source explains why certain questions in math are important.
+### Belief propagation
 
 Our beliefs always have some implications we are not aware of.
 Given more time, absent any new evidence, there are still conclusions we could deduce by thinking alone.
 Our knowledge is connected like a network.
-When you learn about topic X, should change what you think about other topics which are connected to X.
-This process of implication propagation is not automatic, it is intentional, and driven by concrete needs to solve problems.
+When you learn about topic X, it should change what you think about other topics which are connected to X.
+The process of implication propagation is not automatic, it is intentional, and driven by concrete needs to solve problems.
 Source creates a structure which connects all of knowledge.
 This structure offers a natural traversal of knowledge, a flowing sequence of questions and answers.
-It gives you a way to systematically propagate implications.
+It provides a way to systematically propagate implications.
+
+### Inferential distance
 
 Our species lived through a number of revolutions in information technology.
 The first one was the invention of language.
 Prior to that communication was very limited indeed, there was no capacity for culture.
-The next revolution was writing, without which civilization is impossible.
-Then math, without which technology is impossible.
-Then computation, without which advanced technology is impossible.
+The next revolution was writing, necessary for civilization.
+Then math, necessary for technology.
+Then computation, necessary for advanced technology.
 Each revolution depended on the previous one having taken place.
 What is the next revolution?
 
 To explain why the Earth is round to someone without any knowledge of science and mathematics would be a long conversation.
 It would involve talking about what evidence is, what Occam's razor is, what models are, what natural laws are, etc.
 The lack of shared knowledge between two people sometimes demands that hundreds of ideas and concepts be communicated before any mutual understanding is possible.
-This difference of shared knowledge between people is called _inferential distance_, and it is almost always underestimated.
+This difference of shared knowledge between people is called _inferential distance_, and it is usually underestimated.
 Our education system produces some amount of shared knowledge, but far below what is needed to seriously talk about the most important problems in the world today.
-To the list of things we all know about we need to add Solomonoff induction, von Neumann–Morgenstern utility theorem, Nash equilibrium, and many others.
+The list of things all should know about needs to include Solomonoff induction, von Neumann–Morgenstern utility theorem, Nash equilibrium, and many others.
 Source leads to a simple and natural way to organize all of knowledge.
 This brings about a shared perspective and a shared language, reducing the inferential distance.
 This project should lead to a clearer understanding of what knowledge is and how it is generated in society.
 
 > The ancients who wished to illustrate the highest virtue throughout the empire first ordered well their own states. Wishing to order well their states, they first regulated their families. Wishing to regulate their families, they first cultivated their own selves. Wishing to cultivate their own selves, they first rectified their hearts. Wishing to rectify their hearts, they first sought to be sincere in their thoughts. Wishing to be sincere in their thoughts, they first extended to the utmost their knowledge. Things being investigated, knowledge became complete. Their knowledge being complete, their thoughts were sincere. Their thoughts being sincere, their hearts were then rectified. Their hearts being rectified, their persons were cultivated. Their persons being cultivated, their families were regulated. Their families being regulated, their states were rightly governed. Their states being rightly governed, the whole kingdom was made tranquil and happy.  
 > — Confucius
+
+### Metaphysics
+
+The conclusions reached here should not depend on any specific law of physics.
+It is something an artificial general intelligence could think up before ever _opening their eyes_, with no empirical data.
+I think, therefore I am... a structure embedded in a larger structure, an agent embedded in a universe which supports the existence of bounded-tape Turing machines.
+Our goal is a metaphysical theory of everything.
+
+### Beauty
+
+There are insights which radically change our view the world.
+Some change our view about the basic building blocks of reality, or about which ways of thinking make sense.
+We call such insights ontological refactoring.
+Those most important insights include quantum mechanics, the concept of spacetime, mathematical proof and computation.
+Playing with _Source_, you find yourself asking questions like: is there a string which can't be computed by a Turing machine?
+Not just because theoretical computer science is beautiful but because you _need_ the answer to solve some particular problem posed by the theory.
+Source illuminates why certain questions in math are important.
 
 Our goals are very ambitious but we are still very far from achieving them.
 
@@ -167,7 +183,6 @@ On things which are deemed unproven, you are not allowed to have an opinion abou
 Talking about things which are "not known" is deemed as speculation, it is _faux pas_ in most educated circles.
 Yet still it is clear to anyone that playing Russian roulette is not a good choice if you wish to stay alive; even though it is not _known_ if you will die from it or not.
 Lack of deterministic knowledge about X is not a reason to stop thinking about X.
-If ideas of Solomonoff and von Neumann were more popular than the outdated view of Karl Popper, things would perhaps be different.
 There are no proven and unproven statements, instead there are models and a probability distribution on them.
 
 ## Intellectuals
@@ -176,7 +191,7 @@ Arguments are not isolated.
 We can't talk about anything without talking about the entire universe.
 Any discussion, if it's honest and goes on long enough, is bound to either run in circles, or to regress infinitely, or to reach the fundamental axioms of worldviews.
 Intellectuals are biased when it comes to topics they talk about; there is always some new fashionable topic.
-Once some public discussion comes near the axioms the whole exercise becomes too demanding and the audience usually grows tired, so the topic becomes less fashionable and is switched to something else.
+Once some public discussion comes near the axioms the topic is usually switched to something else.
 To reach any clear conclusion it is necessary to talk about the fundamentals.
 
 ## Spirituality
@@ -209,7 +224,7 @@ This project also has a number of desireable properties:
 * Very basic knowledge of Python numbers, strings, lists, `if`, `for`, `while`, functions. The first 5 chapters of the [Python tutorial](https://docs.python.org/3/tutorial/) should be more than enough.
 * Very basic combinatorics and probability. Khan Academy [Probability](https://www.khanacademy.org/math/ap-statistics/probability-ap) and [Counting, permutations, and combinations](https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations) should be enough.
 * Graph theory concepts: vertex, edge, path, tree, root, child, parent, leaf, full binary tree.
-* Other: encoding, algorithm, sampling, Turing-complete, Turing machine, set, subset, union of a set, computable, uncomputable, Halting problem, compiler, string literal, bit, Big O notation, commutativity, infinite sum, equivalence class, Bayes' theorem, uniform distribution, total order, weak order, bijection, countable, uncountable.
+* Other: set, encoding, algorithm, sampling, Turing-complete, Turing machine, computable, Halting problem, compiler, string literal, bit, Big O notation, commutativity, infinite sum, Bayes' theorem, uniform distribution, total order, weak order, bijection, countable.
 
 ## Summary
 
