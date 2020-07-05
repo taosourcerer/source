@@ -100,7 +100,13 @@ It could not be a process which generates just zeroes since that would be incons
 It could be a process with generates 5 ones and then 5 zeroes.
 It could also be a process which generates just a stream of ones without end.
 The latter seams a simpler explanation, a simpler theory.
-It is also a shorter computer program to write.\footnote{We have chosen to use a Turing-complete language to describe the members of the set of possible processes. The alternatives to this will be elaborated later in the document.}
+It is also a shorter computer program to write.\footnote{
+We have chosen to use some Turing-complete language to describe the members of the set of possible processes.
+The alternatives to this will be elaborated later in the document.
+Note that we can't use natural language because of the Berry paradox, where we define a natural number as “the least natural number that cannot be described in fewer than twenty words.”
+If this number does exist, we have just described it in thirteen words, contradicting its definitional statement.
+If such a number does not exist, then all natural numbers can be described in fewer than twenty words.
+}
 This is the key insight we are going to build upon.
 Let's formalize it, step by step.
 
@@ -1336,12 +1342,13 @@ Even if reality is something uncountable, we can at best approximate it with som
 \subsection{Optimality}
 
 The set of all Turing-complete programming languages is a one for which the invariance theorem holds.
-It's not important which member we choose\footnote{Be it for example C or Phython}, because for all languages $A$ and $B$ and all strings $x$ there exists a constatnt $c$ such that $K_A(x) \leq K_B(x) + c$, as explained in the \texttt{1.2.4} subsection.
+It does not matter which member we choose\footnote{Be it for example C or Phython}, because for all languages $A$ and $B$ and all strings $x$ there exists a constatnt $c$ such that $K_A(x) \leq K_B(x) + c$, as explained in the \texttt{1.2.4} subsection.
+This is important since the goal is to have a method which assigns probability on the basis of the objects themselves, not based on the method used to describe them.
 The invariance theorem does not hold in general for all description methods.\footnote{As explained in \textit{AIKCIA}, section \textit{2.1 The Invariance Theorem}.}
 It is our conjecture that invariance holds only for Turing machines.
 
 The other property which should hold is that of convergence.
-Whatever the true process which generated the data is, Solomonoff induction converges very fast to the true process, provided the process is computable.\footnote{As explained in \textit{AIKCIA}, section \textit{5.2.3 Covergence in Ratio}.}
+Whatever the true process which generated the data is, Solomonoff induction converges very fast to the true process, provided the process is computable.\footnote{\textit{AIKCIA}, section \textit{5.2.3 Covergence in Ratio}.}
 It is our conjecture that no other choice of the prior converges faster.
 Since our assumptions seem minimal, we claim this is the optimal theory of everything.
 
