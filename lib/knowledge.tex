@@ -702,7 +702,7 @@ This, however, does not show that the chance we are living in a simulation is lo
 Neither does it show that there is a low \textit{prior} probability of us living in a simulation.
 In case some agent investigates the laws of physics and finds them very complex, Solomonoff induction could show that it is more likely that he is embedded in a simulation being run inside a simpler outer universe.
 Of course, that outer universe needs to contain a simulation of the inner universe the agent is embedded in.
-It could be a shorter program overall.\footnote{This will be more clear after the Indexicality subsection.}
+It could be a shorter program overall.\footnote{This will be more clear after the \textit{1.6.2 Indexicality} subsection.}
 
 \newpage
 
@@ -1124,7 +1124,7 @@ It is just defined by a list of some numbers.
 What are numbers made of?\footnote{Idea from \textit{Our Mathematical Universe} by Max Tegmark.}
 
 Our theory does not imply the universe actually is a program being run somewhere.
-As we already discussed in subsection \texttt{1.6.3}, the program depends on the choice of language, encoding, and the location of the observer, so it can't be equivalent to reality.
+As we already discussed in the \textit{1.6.3 Reality} subsection, the program depends on the choice of language, encoding, and the location of the observer, so it can't be equivalent to reality.
 Additionally, the idea that our universe is being run on a cosmic computer requires not just to specify the program being run, but also to add the unnecessary complication \textit{and it is being run on a computer}. 
 That computer would need to be instantiated somewhere, where?
 In a whole other universe with a separate laws of nature?
@@ -1200,8 +1200,8 @@ Axiom 2 does not limit us to finite structures, nor to discrete\footnote{In math
 % btw solomonoff works even when the world is inherently stohastic (li, vitanyi, chapter 5.2), being e.g. a probabilistic Turing machine or, say, a Markov process
 
 Is a better theory possible?
-Any such theory would need to assume axiom 1, and it would also still need to explain the unreasonable effectiveness of mathemathics in the natural sciences, along with every other thing Source explains.
-It seems like every theory will have an encoding problem, indexicality problem and the observation selection problem.
+Any such theory would need to assume axiom 1, and it would also still need to explain every other thing Source explains.
+It seems like every theory would need to deal with encoding, indexicality, and the observation selection problem.
 
 
 \newpage
@@ -1211,17 +1211,15 @@ It seems like every theory will have an encoding problem, indexicality problem a
 The starting point of our analysis was subjective experience.
 It seems impossible to start anywhere else since subjective experience is all we have direct knowledge of.
 In case the current moment is all there is, then there is also no need for any model or compression, the "theory" would be equivalent to printing a string literal.
-Hence, we took \textit{time is real} as an axiom, and every theory would need to do the same. We noticed patterns in our experience. As we already discussed in subsection \texttt{1.7.2 Monism}, in patternless worlds no agents can exists.
+Hence, we took \textit{time is real} as an axiom, and every theory would need to do the same.
+We noticed patterns in our experience. As we already discussed in the \textit{1.7.2 Monism} subsection, in patternless worlds no agents can exists.
 
 Every theory needs a description method in order to describe the set of possible structures for where our experience could be coming from.
-We could have selected a Mealy machine.\footnote{A Mealy machine is equivalent to a Moore machine.}
-They are equivalent to a deterministic finite automaton\footnote{A DFA is equivalent to a regular expression.} (DFA) but with an extra mechanism for generating output.
+We could have selected a Mealy machine.\footnote{A Mealy machine is equivalent to a Moore machine. They are both like a deterministic finite automaton (DFA) but with an extra mechanism for generating output. A DFA is equivalent to a regular expression.}
 They can't even generate a sequence of natural numbers.
 We selected to use a Turing machine or a Turing-complete programming language.\footnote{Also known as a partial recursive function, also known as a partial computable function.}
 % can https://en.wikipedia.org/wiki/Pushdown_automaton generate all natural numbers?
 %todo https://en.wikipedia.org/wiki/Chomsky_hierarchy
-Also, we could have selected some uncountable structure.
-There are structures which can be defined but can't be generated even with hypercomputation, as for example the set of real numbers.
 
 Once we have a set of possible structures $S$, a prior probability distribution on $S$ is needed.
 The distribution can't be uniform, as then the probability of each structure would be 0.
@@ -1312,7 +1310,7 @@ No, since if $M_D$ were to exist, that would imply that either:
 Either way, there is a contradiction. This structure is \textit{defineable} yet it is \textit{impossible}.
 There are some structures which are contradictory and can't exist.\footnote{Another famous one is the set of all sets that are not members of themselves, known as the Russell's paradox.}
 Even those structures \textit{have properties}, or at least we can talk about the properties they would have if they were to be possible.
-Us being capable of talking about them does not imply they are possible.
+Us being capable to talk about them does not imply they are possible.
 
 Are there structures which can't be described even by mathematics?
 Such unknown unknowns can't be conclusively ruled out, but it remains unclear what to do about that possibility.
@@ -1327,9 +1325,6 @@ Since the memory tape of the Turing machine is countable, there is no way for a 
 Even if we had some magic-Turing machine which could generate the set or reals, it could not iterate that set since a real number has no defined successor.\footnote{The rational numbers also have no successor.}
 Going even further, imagine we had some super-magic-Turing machine which could iterate the set of reals, in that case it could print them in order, which would lead to a contradiction.
 
-On the one hand, if we ignore some possibilities, we are biased.
-On the other hand, there is no need to assume more complex structures are needed if they are not in fact needed, and if we can do everything we need with simpler structures.
-
 Each thought is a discrete entity and there is a limited number of them per unit of time.
 How is it possible to talk about uncountable sets?
 What we are doing when reasoning about uncountable sets is reasoning about properties.
@@ -1342,7 +1337,7 @@ Even if reality is something uncountable, we can at best approximate it with som
 \subsection{Optimality}
 
 The set of all Turing-complete programming languages is a one for which the invariance theorem holds.
-It does not matter which member we choose\footnote{Be it for example C or Phython}, because for all languages $A$ and $B$ and all strings $x$ there exists a constatnt $c$ such that $K_A(x) \leq K_B(x) + c$, as explained in the \texttt{1.2.4} subsection.
+It does not matter which member of the set we choose, because for all languages $A$ and $B$ and all strings $x$ there exists a constatnt $c$ such that $K_A(x) \leq K_B(x) + c$, as explained in the \textit{1.2.4 Invariance} subsection.
 This is important since the goal is to have a method which assigns probability on the basis of the objects themselves, not based on the method used to describe them.
 The invariance theorem does not hold in general for all description methods.\footnote{As explained in \textit{AIKCIA}, section \textit{2.1 The Invariance Theorem}.}
 It is our conjecture that invariance holds only for Turing machines.
@@ -1356,7 +1351,7 @@ Since our assumptions seem minimal, we claim this is the optimal theory of every
 
 \subsection{Solutions}
 
-We used various problems and paradoxes to test if our solution makes sense. Here are some of the problems which are claimed to be solved:
+Here are some of the problems which are claimed to be solved:
 
 \begin{itemize}
 \item The problem of induction
