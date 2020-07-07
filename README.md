@@ -198,14 +198,6 @@ Intellectuals are biased when it comes to topics they talk about; there is alway
 Once some public discussion comes near the axioms the topic is usually switched to something else.
 To reach any clear conclusion it is necessary to talk about the fundamentals.
 
-### Spirituality
-
-There exists an eternal structure which is the cause of all phenomena and permeates all being.
-You can, at least in part, become one with that structure and in that way achieve immortality.
-There exists an optimal way to systemize knowledge.
-It is bound to be rediscovered over and over again by intelligent agents.
-Even if they are in universes with laws of nature different than ours, they will converge on discovering the same structure.
-
 ## Motivation
 
 > Have you ever experienced a moment of bliss? On the rapids of inspiration maybe, your mind tracing the shapes of truth and beauty? Or in the pulsing ecstasy of love? Or in a glorious triumph achieved with true friends? Or in a conversation on a vine-overhung terrace one star-appointed night? Or perhaps a melody smuggled itself into your heart, charming it and setting it alight with kaleidoscopic emotions? Or when you prayed, and felt heard? If you have experienced such a moment – experienced the best type of such a moment – then you may have discovered inside it a certain idle but sincere thought: “Heaven, yes! I didn’t realize it could be like this. This is so right, on whole different level of right; so real, on a whole different level of real. Why can’t it be like this always? Before I was sleeping; now I am awake.”  
@@ -265,4 +257,6 @@ A list of references can be found here: [bibliography.md](https://github.com/tao
 
 ## Support
 
-BTC: 198L5jAWXBm5DBmVaNYN15b3SAMn5iao8z
+You can support the project by donating BTC to this address: `198L5jAWXBm5DBmVaNYN15b3SAMn5iao8z`
+
+If you like the project please share it to at least two other people who may also like it.
