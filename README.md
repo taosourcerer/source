@@ -260,6 +260,6 @@ A list of references can be found here: [bibliography.md](https://github.com/tao
 You can support the project by donating BTC to this address: `198L5jAWXBm5DBmVaNYN15b3SAMn5iao8z`
 
 As a complete outsider, it's impossible for me to reach many people.
-The only way to do it is to grow the readership organically by word of mouth.
-Increasing the number of readers also increases the number of reviews and critiques, which make the end result better.
-If you like the project please share it to at least two other people who may also like it.
+This project grows organically by word of mouth.
+Increasing the number of readers increases the number of reviews and critiques, which makes the project better.
+If you like the project please share it to at least two other people who you think may also like it.
