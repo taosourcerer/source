@@ -9,7 +9,6 @@ In doing so, we are constructing a philosophical system which unifies all theore
 There is a natural way in which all of knowledge gracefully folds together.
 The number of reasonable ways of thinking about the world is limited.
 It is possible to construct a system which is optimal.
-This system provides an organizing principle for creating new knowledge.
 
 The output this project is a document: [source.pdf](https://github.com/taosourcerer/source/blob/master/source.pdf)
 The document presents a worldview.
@@ -259,7 +258,6 @@ A list of references can be found here: [bibliography.md](https://github.com/tao
 
 You can support the project by donating BTC to this address: `198L5jAWXBm5DBmVaNYN15b3SAMn5iao8z`
 
-As a complete outsider, it's impossible for me to reach many people.
 This project grows organically by word of mouth.
 Increasing the number of readers increases the number of reviews and critiques, which makes the project better.
 If you like the project please share it to at least two other people who you think may also like it.

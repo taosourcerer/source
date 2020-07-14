@@ -1,0 +1,297 @@
+
+you can either privilege the current moment, or not privilige it
+
+(physicists say that you can't privilege it, based on general relativity)
+
+One way to store structures in $u$ is to store the spatial coordinates of objects, along with other properties of such objects, we call this a sparse structure.
+For example if we had two objects in a 3D space with one additional property (e.g. mass),  we could store \verb|[(1,2,3,1), (3,2,1,1)]|.
+The other way is cellular, to store the contents of each n-dimensional cell of space, like we did in our 1D cellular automaton example.
+How to initialize a sparse structure?
+Start with some point in space and set the properties, jump to some other point in space and set the properties, etc.
+Space-filling curves or fractals could perhaps be used to initialize them, since they lead to relatively short programs.
+This shuold still take more code than initializing a cellular structure, which in one-dimensional case can be filled with $s_\infty$.
+Analogously for $n$ dimensions, $s_\infty$ can be used to fill a plane, moving diagonally.
+
+Our model of hypercomputation\footnote{Infinite steps in 0 units of time.} allows for addition of numbers with infinite precision.\footnote{Infinitely many decimal places. The same applies to multiplication, which is just repeated addition.}
+Cellular structures on the other hand have a limited spatial precision.
+
+The contents of a cell can be a structure such as a totally ordered set of properties.
+In that case, how is the $s_\infty$ split up?
+The values of some properties in a cell can be infinitely large.
+We need to split $s_\infty$ into chunks of some finite size, and then translate it somehow into properties, so the maximum value for each property is limited.
+
+A period is the amount of time which passes between two steps, i.e. between going from state $u_{(p,n)}$ to $u_{(p,n+1)}$.
+Programs in which periods are constant (the same amount of time always passes between two steps) are more probable than ones in which the period changes with time.
+There are programs in which an infinite amount of steps are executed in some finite amount of time, but those are exotic and lead to longer programs.\footnote{Periods can be $1,1/2,1/4...$. After that executes, it can be repeated again. Exotic versions in which a finite amount of steps is executed also exist, e.g. time step being $1/n$ where $n$ is the number of steps from the initial state to now.}
+
+the rule which plots a sine wave is somehow fundamentally a "continuous" rule, yet the image is discretized
+is it possible that a simple rule which is fundamentally continous generates something which can be discretized to an arbitrary degree?
+the structure would include time as a dimension
+the program which plots a sine wave can reach arbitrariliy large resolution because you can get sin(x), for every x, in closed form
+if reality is continous, there is still a method to allow encoding it up to an arbitrary high resolution, by creating an entire spacetime
+
+It is always possible to find another rational number between any two members of the set of rationals. Therefore, rather counterintuitively, the rational numbers are a continuous set, but at the same time countable.
+it's not possible to sort rational numbers because they have no successor
+set of all computable numbers is countable, almost all reals are not computable
+"The phrase "continuous set" is not used in the Western literature."
+
+there are problems with no closed form solution, such as the three body problem
+the precision would need to be arbitrarily large, because of the butterfly effect
+how to test if the universe is digital?
+instantiate a very simple system which is highly dependent on initial conditions, say a few particles, and observe their behavior
+also, have a very powerful computer which predicts where the particles should end up
+if the computer is more precise than the universe (which "rounds off"), it could be made less and less precise until the prediction matches
+you can prove the universe is discrete, but not prove it's continuous
+
+Computational irreducibility -> no closed form solution for “generate state in step t”, you need to simulate
+all Turing-complete universes are computationally irreducible, otherwise you could solve the Halting problem: https://en.wikipedia.org/wiki/Computational_irreducibility
+"The empirical fact is that the world of simple programs contains a great diversity of behavior, but, because of undecidability, it is impossible to predict what they will do before essentially running them."
+
+you can generate all rational numbers, and also all combiations of rational numbers, therefore an array can be constructed [(x,y,z,t,m...),...] where x,y,z,t are rational
+entire spacetime can be constructed, some points initialized to have a mass of 0 (or any other property) and some other to some other number...
+this structure can be iterated and if x > k and x < k+delta (and so on for y,z,t) it can be sampled to some resolution delta
+this resolution is in line with the one which we used to encode the string s
+
+Newton invented calculus to solve some problems of physics
+is it possible to have calculus but only on the set of Q?
+are there patterns which are describable by differential equations but not realizable within a Q-based universe?
+
+"It bothers me that, according to the laws as we understand them today, it takes a computing machine an infinite number of logical operations to figure out what goes on in no matter how tiny a region of space, and no matter how tiny a region of time. How can all that be going on in that tiny space? Why should it take an infinite amount of logic to figure out what a tiny piece of space-time is going to do? So I have often made the hypothesis that ultimately physics will not require a mathematical statement, that in the end the machinery will be revealed and the laws will turn out to be simple, like the checker board with all its apparent complexities." (Feynman 1965)
+
+The best compression for data we see is to describe the initial state of the universe and laws of nature describing how the state changes.
+The laws of nature, given some state, describe the next state.
+We can think of them like a mathematical function which takes current state as input and returns next state as output.
+But they, given some state, also define the previous state.
+When you look at laws of nature, which are of course written in the language of mathematics, there is no variable which declares in which way the time flows.\footnote{Entropy only increases in irreversible systems, in reversible ones it stays the same.}
+Time is not a vector.
+
+Time seems to flow forward.
+This is separate from the question of qualia.
+At each point we have qualia of the current moment.
+Also, we have memories and our memories do modify our current experience of qualia by bringing to mind images, sounds, emotions, etc.
+
+Imagine people playing a game of pool, an opening shot scattering the balls.
+Now play that opening shot in reverse.
+The reverse shot seems strange.
+The balls would need to be placed and shot \textit{just so} they, after bouncing around, land in a triangle formation with the white ball shooting out forwards and being stopped by the stick.
+Why does this reversal contain this \textit{just so} quality of weirdness?
+
+todo name other asymmetries of time
+
+Reality is a data structure $u$.
+The simplest example would be one bit.
+That structure gets changed over time by what we call laws of nature, $u_i \rightarrow u_{i+1} \rightarrow ...$.
+One bit can be changed by a not function\footnote{$not(0) = 1$; $not(1) = 0;$} or an identity function.\footnote{$identity(0) = 0$; $identity(1) = 1;$}
+Both of those functions are reversible: given the output you can compute the input.
+A finite array of $n$ bits can be in $2^n$ possible states, each state can be updated in $2^n$ ways, which gives us $2^{2n}$ possible functions.
+In case a two different states get mapped into the same state, the function is not reversible.
+That is, in order for it to be reversible, the function needs to be a \textit{one on one mapping}, in other words, a bijection.
+Any finite structure in state $s$, which is being updated in an infinite loop, will find itself in that state again in the future, cycles of states form.
+Those cycles can be of length one, the universe always remaining in some fixed state.
+In non-reversable universes there exist states which you could start in but can't get to otherwise.
+Those are known as Garden of Eden states, or just Eden states.
+
+\vspace{15px}
+
+\begin{figure}[h]
+	\centering
+\scalebox{1}{
+	\begin{tikzpicture}
+  		[scale=1,auto=left,every node/.style={circle,fill=red!20}]
+  		\node (1) at (1,1)  {\texttt{01}};
+  		\node (2) at (7,1)  {\texttt{10}};
+  		\node (3) at (3,1)  {\texttt{11}};
+  		\node (4) at (5,1)  {\texttt{00}};
+    	\foreach \from/\to in {1/3,2/4}
+    	\draw[->] (\from) -- (\to);
+		\draw[->] (3) to [out=30,in=150] (4);
+		\draw[->] (4) to [out=-150,in=-30] (3);
+	\end{tikzpicture}
+}
+\caption{States 01 and 10 are Eden states.}
+\end{figure}
+
+reversible automata may not be shorter, but there's more of them in the sense that there's more equivalent programs (ones which have a different starting state but describe the same universe)
+
+\subsection{Two dimensional}
+
+Take as an example a simple universe which is a 2D board of squares (cells) which can be either white (dead) or black (alive).
+We start by defining a state and then the following rules apply:
+
+\begin{itemize}
+{\small
+\item Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+\item Any live cell with two or three live neighbors lives on to the next generation.
+\item Any live cell with more than three live neighbors dies, as if by overpopulation.
+\item Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+}
+\end{itemize}
+
+This is called Conway's game of life.
+This game gives rise to a number of interesting patterns, one of which is a glider:
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.3]{images/glider.png}
+%\end{figure}
+
+In such a universe, there is a construction called Gosper's glider gun, which endlessly produces gliders:
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=1.4]{images/gosperglidergun.jpg}
+%\end{figure}
+
+We can describe the state of the board by writing down which cells are alive, but the longer the game goes on more squares become alive so the list of alive cells keeps growing.
+You can compress each of those late states by instead describing the initial state and which step of the simulation you are on.
+
+We could also describe all of the data, previous and future, by taking together any arbitrary state (such as, for example, now) and the laws of nature.
+The later states (such as now) are more complex to describe than the initial state.
+That's what makes the initial state special, it makes for better compression.
+
+Last Thursdayism is the theory that the universe was created last Thursday, as opposed to 13.7 billion years ago.
+It was created in the state it was in at that time, including all memories of the previous times.
+This is not a good theory because the program which describes the state of the world last Thursday and the laws of nature is more complex than the one which describes the initial state of the universe and the laws of nature.  
+
+Game of life is not reversible.
+
+https://en.wikipedia.org/wiki/Critters_(block_cellular_automaton) -> reversible, has complex patterns
+
+example of an universe which does not get more complex with time is the one which laws generate: 0,1,0,1,0,1... There you can get $n$th state from $(n-1)$th or $(n+1)$th with the same ease. In a universe which generates: 1,2,3,... the previous state on expectation has fewer bits than later states, so the states do get more complex over time.
+
+how often do turing-complete universes appear?
+memory is crucial for turing machines
+
+photographies are good examples of traces. one object can be photographed many times. describing the state of the universe just after the object was created would require to describe the object, while describing each later state of the universe would require to describe each of the photographies + the object. the fact that we live in a kind of universe which it is easier to compute later states from earlier states than it is to compute earlier states from later states is responsible for the fact that memories can be formed. a single early object can leave many copies of itself. This also enables evolution to take place.
+
+looking at copying with the time being the fourth dimension, copying creates a tree-like structure. a subset of the universe is being branched off and now there are two subsets which are very similar to each other. (they may not be physically identical, but similar enough) This is a process which every user of git is familiar with.
+
+We can imagine the snapshot of each state of the 2D game being printed out on paper and papers stacked on a table one atop another, so the next state comes on top of previous state.
+In that way, time is a third dimension.
+The higher in the stack a paper is the later time it is in that particular state.
+
+since we said what we are searching for is a mathematical structure, not a running program, the structure is static and there is no flow of time
+
+The reason we are under the illusion the time flows is because we have memories formed in our minds.
+It may seem weird to picture time running backwards, with your memories forming in advance of events actually taking place.
+Just imagine that some structure in your brain which forms, which describes an event, and only after that structure has formed, the event actually happens.
+That is actually not so strange.
+It's exactly how correct predictions look like, just in the opposite direction.
+Yet again this does not resolve the paradox since it is easier to form memories than to come up with successful predictions.
+
+The view of the world presented in this document is agnostic in relation to the actual laws of nature in our universe.
+It's conclusions are aimed to be invariant in relation to the concrete laws.
+We can expect agents to percieve the illusion of passage of time in any universe in which the earlier states are simpler than later states.
+
+Take a tank of water with a barrier in the middle dividing it into two parts.
+On the left part there is dark-inked water and on the right there is clear water.
+When you remove the barrier, you will see the waters mixing and after a while it will all be light-inked.
+Yet you will in practice never see the lightly inked water separate spontaneously.
+
+Entropy, as defined by statistical physics, treats the behavior of molecules as random.
+We start with an unmixed state and then from that state you have $n$ potential next states, each of them having $n$ potential next states and so on, comprising a tree of states.
+When we look at which states are possible 10 minutes after the mixing process started the vast majority of such future states are mixed, because there are more ways for the molecules to be mixed than separated.
+This will be easier if you think about the case where there is no water at all, where you have a gas of ink in the one side of the tank and vacuum in the other side.
+The gas consists out of 5 molecules and there are 10 places for them on the left side of the tank and 10 places for them on the right side.
+Under the condition where all of the molecules are on the left you have ${10 \choose 5} = 252$ possible states, while there are ${20 \choose 5} - 2 \times {10 \choose 5} = 15000$ mixed states, meaning states with at least one molecule on each side.
+
+The problem is, the universe is not random so in reality there are different possible starting states, each of which has a determined future.
+If we could run the water tank experiment for all possible initial states of the tank we would find some in which they stay separated.
+In those cases, from the perspective of the right side, the molecules of the left side act the same as the barrier does.
+No information about the state of the left side propagates to the right side.
+In order to compute the position of the atoms on the right side we can treat the left side in the same way as we would treat a barrier.
+We can model it as static and simple, and in doing so we perform a data compression. 
+
+We could also find one state where they mix just a tiny bit and then they unmix.
+In that case the molecules closest to the border have influenced the behavior of the molecules in the other part of the tank, but the molecules far from the border have had no influence at all.
+In the normal case of full mixing the more time passes the more does the state of the distant part of the tank depend on the initial state of some other distant part of the tank, and to the larger extent do the positions of the clear molecules depend on the inked ones.
+Entropy increases when information propagates through space.
+
+%TODO information theoretical definition of entropy?
+
+In the game of life, to explain why a cell in game of life is dead or alive after one step into the game all you need to know are the neighboring cells, of distance one.
+To explain it after $n$ states, you need to consider cells of distance of roughly $n$.
+The more time it passes, the light from more distant places in the universe reaches us and the more distant locations in the universe get intermingled as one depends on the other.
+The same process occurs to separated systems locally as illustrated with the water tank.
+As this sphere of influence expands, the universe becomes more complex.
+Things seem as if they leave a trace, as you can see easily in the case of a glider gun.
+Memories are a certain kind of trace.
+The propagation of information is asymmetrical, which ultimately comes from the initial state being simpler than later states, and this creates the illusion that time flows and has a direction.
+
+The laws of nature completely define how the future looks like, which implies that free will is impossible.
+Whichever state you are currently in it was defined at the time of big bang, by the initial state of the universe and the laws of nature.
+Your brain is made of cells which are made of molecules which are made of atoms which are made of subatomic particles.
+Given enough computing power and complete knowledge about the room you are in we could construct a perfect simulation of it, including you and your brain, and run the simulation in which the simulated-you would behave identically to the real you.
+If free will was possible it would enable you to act in ways which defy the laws of nature, thus making the laws incorrect.
+Even if you take quantum mechanics into account, that just adds random noise.
+This is true for every possible law of nature, in all possible universes.
+Not only do our current laws prohibit free will but mathematics itself does not allow it.
+
+The feeling of free will you have is an illusion in the same way the feeling of the Earth being flat and motionless is an illusion.
+You are capable of thinking about the future, considering your actions and picking what seems the best for you, as you are capable of letting your intuition guide you.
+In any case, you don't know exactly what your brain is doing or why, and therefore it seems like you are free.
+The illusion comes from not being able to predict your own behavior, since your brain can't model itself perfectly.
+
+The amount of information you as an agent have is bounded and as time goes on, outcomes of experiments and events which we could not predict become realized.
+This gives us a feeling that possibilities become actualities.
+That feeling comes from our lack of knowledge about what the actuality will be.
+
+Same as for laws being constant in time, the programs which behave the same irrespective of space are simpler to describe than programs which behave one way in one region and another way in another region.
+This is also known as a symmetry under translation in space.
+A thing is symmetrical if there is something we can do to it so that after we have done it, it looks the same as it did before.\footnote{Attributed to Hermann Weyl by Richard Feynman.}
+Here we pushed the law through space and it stayed the same.
+How would it look like if the laws were not symmetrical under translation in space?
+You would have to define the center of the universe and some law would, on the basis of the distance from that, change.
+For example, you could have an equation for the force of gravity which becomes weaker as you go further from the center.
+This additional definition makes the program longer.
+
+The laws are also symmetrical to rotation and if they were not you would need to define some direction in the universe which is special.
+They are symmetrical to uniform velocity, if they were not then you would need to define the velocity, velocity from what?
+You would need to define a center of the universe again.\footnote{There are other symmetries which you can find in Feynman's lecture on Symmetry in Physical Laws.}
+The laws are symmetrical with translation in time.
+If they were not, then you would have some law which in the equation has a timestamp as a variable, for example gravity becoming weaker over time.
+You can push the laws of nature as far as you want forwards in time and they stay the same, but you can't push them as far as you want backwards because at some point there is no backwards, you hit a wall with a big bang.
+The beginning of the universe seems like a unique point, because it is the only point from which you can't go back in time.
+
+The laws are also symmetrical under reversal in time, or in other words, as we mentioned, they do not specify only the next state but also the previous one.
+When we define the initial state and the laws of nature we are defining a space with a time dimension which is defined for both positive and negative values of time.
+Going from our current state backwards we arrive at the big bang and going one step backwards we arrive at moment numbered -1, which is identical to moment 1, and so on, the whole space being mirrored around t = 0.
+In fact, now you don't need to define what t = 0 is, you can just translate all of the snapshots along the time dimension and it does not make a difference.
+This makes the laws fully time-symmetrical, there is no unique point in time.
+Time does not flow but in a certain sense it spreads in two directions.
+
+boltzmann brains... initial state with the size of the "sphere of influence" and it gets smaller as time increases, inverted light-cone
+
+there is a large set of such start-states which then after a while form the solar system, while the starting state which forms the brain in your state is very specific, that set is smaller
+
+the universe did not come into existence
+what was before time? also time.
+mention that in an infinite universe if you go far enough into distance, there is a copy of you
+
+what are the conservation laws in mathematics?
+a triangle may be transformed, but however it is, the sum of angles is 180
+a permutation keeps the same number of elements of each kind
+
+Lorentz symmetry perhaps implies that space is continuous
+
+the laws can be viewed as transformations
+some kinds of transformations are impossible, some are possible
+you can view a subset of the world as something which can be initialized in some way
+then, it gets transformed according to laws of physics
+
+https://www.lesswrong.com/posts/mpaqTWGiLT7GA3w76/einstein-s-speed
+
+%discovery of the neutrino:
+%- the conversation of momentum of all visible particles does not add up, hence there has to be an invisible particle which contributes to momentum somehow
+
+---
+
+https://en.wikipedia.org/wiki/A_New_Kind_of_Science#Computational_irreducibility
+https://en.wikipedia.org/wiki/Computational_irreducibility
+https://en.wikipedia.org/wiki/Complex_system
+https://en.wikipedia.org/wiki/Systems_theory
+https://en.wikipedia.org/wiki/Cybernetics
+https://en.wikipedia.org/wiki/CORDIC
+https://en.wikipedia.org/wiki/History_of_calculus
+https://math.stackexchange.com/questions/1880741/why-cant-calculus-be-done-on-the-rational-numbers
+https://en.wikipedia.org/wiki/L-system
