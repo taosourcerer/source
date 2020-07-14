@@ -221,7 +221,7 @@ This project also has a number of desireable properties:
 * Graph theory concepts: vertex, edge, path, tree, root, child, parent, leaf, full binary tree.
 * Other: set, encoding, algorithm, sampling, Turing-complete, Turing machine, computable, Halting problem, compiler, string literal, bit, Big O notation, commutativity, infinite sum, Bayes' theorem, uniform distribution, total order, weak order, bijection, countable.
 
-## Summary of the first chapter
+## Overview of the first chapter
 
 Assumptions:
 
