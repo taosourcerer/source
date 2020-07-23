@@ -1,62 +1,9 @@
-
-you can either privilege the current moment, or not privilige it
-
-(physicists say that you can't privilege it, based on general relativity)
-
-One way to store structures in $u$ is to store the spatial coordinates of objects, along with other properties of such objects, we call this a sparse structure.
-For example if we had two objects in a 3D space with one additional property (e.g. mass),  we could store \verb|[(1,2,3,1), (3,2,1,1)]|.
-The other way is cellular, to store the contents of each n-dimensional cell of space, like we did in our 1D cellular automaton example.
-How to initialize a sparse structure?
-Start with some point in space and set the properties, jump to some other point in space and set the properties, etc.
-Space-filling curves or fractals could perhaps be used to initialize them, since they lead to relatively short programs.
-This shuold still take more code than initializing a cellular structure, which in one-dimensional case can be filled with $s_\infty$.
-Analogously for $n$ dimensions, $s_\infty$ can be used to fill a plane, moving diagonally.
-
-Our model of hypercomputation\footnote{Infinite steps in 0 units of time.} allows for addition of numbers with infinite precision.\footnote{Infinitely many decimal places. The same applies to multiplication, which is just repeated addition.}
-Cellular structures on the other hand have a limited spatial precision.
-
-The contents of a cell can be a structure such as a totally ordered set of properties.
-In that case, how is the $s_\infty$ split up?
-The values of some properties in a cell can be infinitely large.
-We need to split $s_\infty$ into chunks of some finite size, and then translate it somehow into properties, so the maximum value for each property is limited.
-
-A period is the amount of time which passes between two steps, i.e. between going from state $u_{(p,n)}$ to $u_{(p,n+1)}$.
-Programs in which periods are constant (the same amount of time always passes between two steps) are more probable than ones in which the period changes with time.
-There are programs in which an infinite amount of steps are executed in some finite amount of time, but those are exotic and lead to longer programs.\footnote{Periods can be $1,1/2,1/4...$. After that executes, it can be repeated again. Exotic versions in which a finite amount of steps is executed also exist, e.g. time step being $1/n$ where $n$ is the number of steps from the initial state to now.}
-
-the rule which plots a sine wave is somehow fundamentally a "continuous" rule, yet the image is discretized
-is it possible that a simple rule which is fundamentally continous generates something which can be discretized to an arbitrary degree?
-the structure would include time as a dimension
-the program which plots a sine wave can reach arbitrariliy large resolution because you can get sin(x), for every x, in closed form
-if reality is continous, there is still a method to allow encoding it up to an arbitrary high resolution, by creating an entire spacetime
-
-It is always possible to find another rational number between any two members of the set of rationals. Therefore, rather counterintuitively, the rational numbers are a continuous set, but at the same time countable.
-it's not possible to sort rational numbers because they have no successor
-set of all computable numbers is countable, almost all reals are not computable
-"The phrase "continuous set" is not used in the Western literature."
-
-there are problems with no closed form solution, such as the three body problem
-the precision would need to be arbitrarily large, because of the butterfly effect
-how to test if the universe is digital?
-instantiate a very simple system which is highly dependent on initial conditions, say a few particles, and observe their behavior
-also, have a very powerful computer which predicts where the particles should end up
-if the computer is more precise than the universe (which "rounds off"), it could be made less and less precise until the prediction matches
-you can prove the universe is discrete, but not prove it's continuous
-
-Computational irreducibility -> no closed form solution for “generate state in step t”, you need to simulate
-all Turing-complete universes are computationally irreducible, otherwise you could solve the Halting problem: https://en.wikipedia.org/wiki/Computational_irreducibility
-"The empirical fact is that the world of simple programs contains a great diversity of behavior, but, because of undecidability, it is impossible to predict what they will do before essentially running them."
-
-you can generate all rational numbers, and also all combiations of rational numbers, therefore an array can be constructed [(x,y,z,t,m...),...] where x,y,z,t are rational
-entire spacetime can be constructed, some points initialized to have a mass of 0 (or any other property) and some other to some other number...
-this structure can be iterated and if x > k and x < k+delta (and so on for y,z,t) it can be sampled to some resolution delta
-this resolution is in line with the one which we used to encode the string s
-
-Newton invented calculus to solve some problems of physics
-is it possible to have calculus but only on the set of Q?
-are there patterns which are describable by differential equations but not realizable within a Q-based universe?
-
-"It bothers me that, according to the laws as we understand them today, it takes a computing machine an infinite number of logical operations to figure out what goes on in no matter how tiny a region of space, and no matter how tiny a region of time. How can all that be going on in that tiny space? Why should it take an infinite amount of logic to figure out what a tiny piece of space-time is going to do? So I have often made the hypothesis that ultimately physics will not require a mathematical statement, that in the end the machinery will be revealed and the laws will turn out to be simple, like the checker board with all its apparent complexities." (Feynman 1965)
+the universe is a mathematical structure, described by a computer program
+this structure is n-dimensional, where time is just another dimension
+it is eternal and immutable
+then, why does time appear to flow?
+(you can either privilege the current moment, or not privilige it...
+physicists say that you can't privilege it, based on general relativity)
 
 The best compression for data we see is to describe the initial state of the universe and laws of nature describing how the state changes.
 The laws of nature, given some state, describe the next state.
@@ -76,7 +23,64 @@ The reverse shot seems strange.
 The balls would need to be placed and shot \textit{just so} they, after bouncing around, land in a triangle formation with the white ball shooting out forwards and being stopped by the stick.
 Why does this reversal contain this \textit{just so} quality of weirdness?
 
-todo name other asymmetries of time
+the structure is also countable
+can it support continuous space?
+(many known laws of nature are defined using mathematical concepts based on the set of real numbers)
+
+"It bothers me that, according to the laws as we understand them today, it takes a computing machine an infinite number of logical operations to figure out what goes on in no matter how tiny a region of space, and no matter how tiny a region of time. How can all that be going on in that tiny space? Why should it take an infinite amount of logic to figure out what a tiny piece of space-time is going to do? So I have often made the hypothesis that ultimately physics will not require a mathematical statement, that in the end the machinery will be revealed and the laws will turn out to be simple, like the checker board with all its apparent complexities." (Feynman 1965)
+
+---
+
+the rule which plots a sine wave is somehow fundamentally a "continuous" rule, yet the image is discretized
+is it possible that a simple rule which is fundamentally continous generates something which can be discretized to an arbitrary degree?
+the structure would include time as a dimension
+the program which plots a sine wave can reach arbitrariliy large resolution because you can get sin(x), for every x, in closed form
+if reality is continous, there is still a method to allow encoding it up to an arbitrary high resolution, by creating an entire spacetime
+
+there are problems with no closed form solution, such as the three body problem
+for the computation to generate the data which is the same as the observed data, given a long enough timeline, the precision would need to be arbitrarily large, because of the butterfly effect
+defining some constant for precision makes the program longer
+
+computational irreducibility = no closed form solution for “generate state in step t”, you need to simulate
+all Turing-complete universes are computationally irreducible, otherwise you could solve the Halting problem: https://en.wikipedia.org/wiki/Computational_irreducibility
+("The empirical fact is that the world of simple programs contains a great diversity of behavior, but, because of undecidability, it is impossible to predict what they will do before essentially running them.")
+having no closed form solution for computing some state x is a property of all laws which are turing-complete
+
+how to test if the universe is digital?
+instantiate a very simple system which is highly dependent on initial conditions, say a few particles, and observe their behavior
+also, have a very powerful computer which predicts where the particles should end up
+if the computer is more precise than the universe (which "rounds off"), it could be made less and less precise until the prediction matches
+you can prove the universe is discrete, but not prove it's continuous
+
+there is no clear mathematical definition of continuity ("The phrase "continuous set" is not used in the Western literature.")
+if we define continuity as "in between every two points there is another point", then the rationals are continuous
+it is always possible to find another rational number between any two rational numbers
+rationals are countable
+it's not possible to sort rational numbers because they have no successor
+set of all computable numbers is computable, almost all reals are not computable
+
+you can generate all rational numbers, and also all combiations of rational numbers, therefore an array can be constructed [(x,y,z,t,m...),...] where x,y,z,t are rational
+entire spacetime can be constructed, some points initialized to have a mass of 0 (or any other property) and some other to some other number...
+this structure can be iterated and if x > k and x < k+delta (and so on for y,z,t) it can be sampled to some resolution delta
+this resolution is in line with the one which we used to encode the string s
+
+if for all particles x, all particles y_i within a region of distance have an effect (e.g. gravitational pull) on the particle x, that can be computed with a double for loop
+force_resultant = [0] * len(particles)
+for x in particles:
+	for y in particles:
+		if in_region(x, y):
+			force_resultant[x] += force(x, y)	
+
+here we ignored time in the code
+define a time step as how far ahead in time a particle needs to be in order for other (previous) particles to effect it
+you could also have a for loop which loops over q where time step = 1/q and q goes to inf
+at the end of the loop you still have an array with countable elements but infinite precision
+
+calculus is used to solve some problems in physics
+is it possible to have calculus but only on the set of Q?
+are there patterns which are describable by differential equations but not realizable within a Q-based universe?
+
+---
 
 Reality is a data structure $u$.
 The simplest example would be one bit.
@@ -87,6 +91,7 @@ A finite array of $n$ bits can be in $2^n$ possible states, each state can be up
 In case a two different states get mapped into the same state, the function is not reversible.
 That is, in order for it to be reversible, the function needs to be a \textit{one on one mapping}, in other words, a bijection.
 Any finite structure in state $s$, which is being updated in an infinite loop, will find itself in that state again in the future, cycles of states form.
+infinite structures even when they are reversible, need not to form loops
 Those cycles can be of length one, the universe always remaining in some fixed state.
 In non-reversable universes there exist states which you could start in but can't get to otherwise.
 Those are known as Garden of Eden states, or just Eden states.
@@ -112,8 +117,6 @@ Those are known as Garden of Eden states, or just Eden states.
 \end{figure}
 
 reversible automata may not be shorter, but there's more of them in the sense that there's more equivalent programs (ones which have a different starting state but describe the same universe)
-
-\subsection{Two dimensional}
 
 Take as an example a simple universe which is a 2D board of squares (cells) which can be either white (dead) or black (alive).
 We start by defining a state and then the following rules apply:
@@ -157,20 +160,25 @@ Game of life is not reversible.
 
 https://en.wikipedia.org/wiki/Critters_(block_cellular_automaton) -> reversible, has complex patterns
 
-example of an universe which does not get more complex with time is the one which laws generate: 0,1,0,1,0,1... There you can get $n$th state from $(n-1)$th or $(n+1)$th with the same ease. In a universe which generates: 1,2,3,... the previous state on expectation has fewer bits than later states, so the states do get more complex over time.
+example of an universe which does not get more complex with time is the one which laws generate: 0,1,0,1,0,1... 
+you can describe each state with the same number of bits
+In a universe which generates: 1,2,3,... the previous state on expectation has fewer bits than later states, so the states do get more complex over time.
 
-how often do turing-complete universes appear?
 memory is crucial for turing machines
-
-photographies are good examples of traces. one object can be photographed many times. describing the state of the universe just after the object was created would require to describe the object, while describing each later state of the universe would require to describe each of the photographies + the object. the fact that we live in a kind of universe which it is easier to compute later states from earlier states than it is to compute earlier states from later states is responsible for the fact that memories can be formed. a single early object can leave many copies of itself. This also enables evolution to take place.
-
-looking at copying with the time being the fourth dimension, copying creates a tree-like structure. a subset of the universe is being branched off and now there are two subsets which are very similar to each other. (they may not be physically identical, but similar enough) This is a process which every user of git is familiar with.
+photographies are good examples of traces
+one object can be photographed many times
+describing the state of the universe at the moment the object was created would require to describe the object
+describing each later state of the universe which contains photographies would require to describe each of the photographies + the object
+turing machines can perform copying
+a single early object can leave many copies of itself
+there are universes which have a simple to define starting states and later states which contain many copies
+this also enables evolution to take place
+looking at copying with the time being the fourth dimension, copying creates a tree-like structure
+a subset of the universe is being branched off and now there are two subsets which are very similar to each other. (they may not be physically identical, but similar enough)
 
 We can imagine the snapshot of each state of the 2D game being printed out on paper and papers stacked on a table one atop another, so the next state comes on top of previous state.
 In that way, time is a third dimension.
 The higher in the stack a paper is the later time it is in that particular state.
-
-since we said what we are searching for is a mathematical structure, not a running program, the structure is static and there is no flow of time
 
 The reason we are under the illusion the time flows is because we have memories formed in our minds.
 It may seem weird to picture time running backwards, with your memories forming in advance of events actually taking place.
@@ -295,3 +303,24 @@ https://en.wikipedia.org/wiki/CORDIC
 https://en.wikipedia.org/wiki/History_of_calculus
 https://math.stackexchange.com/questions/1880741/why-cant-calculus-be-done-on-the-rational-numbers
 https://en.wikipedia.org/wiki/L-system
+
+research other asymmetries of time
+
+---
+
+One way to store structures in $u$ is to store the spatial coordinates of objects, along with other properties of such objects, we call this a sparse structure.
+For example if we had two objects in a 3D space with one additional property (e.g. mass),  we could store \verb|[(1,2,3,1), (3,2,1,1)]|.
+The other way is cellular, to store the contents of each n-dimensional cell of space, like we did in our 1D cellular automaton example.
+How to initialize a sparse structure?
+Start with some point in space and set the properties, jump to some other point in space and set the properties, etc.
+Space-filling curves or fractals could perhaps be used to initialize them, since they lead to relatively short programs.
+This shuold still take more code than initializing a cellular structure, which in one-dimensional case can be filled with $s_\infty$.
+Analogously for $n$ dimensions, $s_\infty$ can be used to fill a plane, moving diagonally.
+
+Our model of hypercomputation\footnote{Infinite steps in 0 units of time.} allows for addition of numbers with infinite precision.\footnote{Infinitely many decimal places. The same applies to multiplication, which is just repeated addition.}
+Cellular structures on the other hand have a limited spatial precision.
+
+The contents of a cell can be a structure such as a totally ordered set of properties.
+In that case, how is the $s_\infty$ split up?
+The values of some properties in a cell can be infinitely large.
+We need to split $s_\infty$ into chunks of some finite size, and then translate it somehow into properties, so the maximum value for each property is limited.
