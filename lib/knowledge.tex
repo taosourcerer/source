@@ -1215,7 +1215,7 @@ Hence, we took \textit{time is real} as an axiom, and every theory would need to
 We noticed patterns in our experience. As we already discussed in the \textit{1.7.2 Monism} subsection, in patternless worlds no agents can exists.
 
 Every theory needs a description method in order to describe the set of possible structures for where our experience could be coming from.
-We could have selected a Mealy machine.\footnote{A Mealy machine is equivalent to a Moore machine. They are both like a deterministic finite automaton (DFA) but with an extra mechanism for generating output. A DFA is equivalent to a regular expression.}
+We could have selected a deterministic finite automaton.\footnote{To any such DFA we need to add an extra mechanism for generating output.}
 They can't even generate a sequence of natural numbers.
 We selected to use a Turing machine or a Turing-complete programming language.\footnote{Also known as a partial recursive function, also known as a partial computable function.}
 % can https://en.wikipedia.org/wiki/Pushdown_automaton generate all natural numbers?
@@ -1240,30 +1240,25 @@ The number of reasonble ways to think about the world is limited.
   		\node (experience) at (4,3) {experience};
   		\node (notime) at (3,2) {no time};
   		\node (time) at (5,2) {time};
-  		\node (nopatterns) at (3.5,1) {no patterns};
-  		\node (patterns) at (6,0) {patterns};
-		\node[fill=orange!20] (one) at (8,0.6) {one model};
-		\node[fill=orange!20] (all) at (8,-0.6) {all models};
-  		\node (mealy) at (3,-3) {Mealy};
-		\node (pushdown) at (4,-3) {pushdown};
-		\node (lba) at (5,-3) {LBA};
-  		\node (turing) at (6,-3) {Turing};
-  		\node (uncountable) at (7,-3) {uncountable};
-  		\node (unknown) at (8,-3) {unknown};
-		\node (speed) at (5,-4.25) {speed};
-		\node (length) at (6,-4.25) {length};
-		\node (memory) at (7,-4.25) {memory};
-		\node (random) at (1.75, -0.5) {random};
-		\node (incompressable) at (3, -0.5) {incompressable};
+  		\node (nopatterns) at (3.5,0.5) {no patterns};
+		\node (random) at (2.75, -0.5) {random};
 		\node (mystical) at (4.25, -0.5) {mystical};
+  		\node (patterns) at (6,0.5) {patterns};
+		\node[fill=orange!20] (one) at (8,1.1) {one model};
+		\node[fill=orange!20] (all) at (8,-0.1) {all models};
+  		\node (dfa) at (5,-1.5) {DFA};
+  		\node (turing) at (6,-1.5) {Turing};
+  		\node (uncountable) at (7,-1.5) {uncountable};
+  		\node (unknown) at (8,-1.5) {unknown};
+		\node (speed) at (5,-2.75) {speed};
+		\node (length) at (6,-2.75) {length};
+		\node (memory) at (7,-2.75) {memory};
     	\foreach \from/\to in {
 experience/notime,
 experience/time,
 time/patterns,
 time/nopatterns,
-patterns/mealy,
-patterns/lba,
-patterns/pushdown,
+patterns/dfa,
 patterns/turing,
 patterns/uncountable,
 patterns/unknown,
@@ -1271,7 +1266,6 @@ turing/speed,
 turing/length,
 turing/memory,
 nopatterns/random,
-nopatterns/incompressable,
 nopatterns/mystical}
     	\draw[->] (\from) -- (\to);
     	\foreach \from/\to in {
