@@ -176,16 +176,12 @@ Some people claim to base their worldview on science.
 This is impossible, since science is incomplete.
 It leaves many problems open, as evident from philosophy of science.
 Science does not inform you what to study at the university, what job to appy to, where to invest, and in general what do do in life.
-To do that, you need to either rely on intuition or you can construct a probability distribution on models and estimate the expected utility.
-Either way, you can't make a randomized controlled trial about it.
-You need to take into accout many small things which can't be measured, yet they still can, and need to, be modelled.
-There is a large amount of misunderstanding of why science works, when it works.
+To do that, some other way of thinking is needed.
 In general, people often place statements into two distinct sets, proven and unproven.
-On things which are deemed proven, if you disagree with science then you are judged as a fool.
-On things which are deemed unproven, you are not allowed to have an opinion about them.
+On things which are deemed "proven", if you disagree with science then you are considered to be low-status.
 Talking about things which are "not known" is deemed as speculation, it is _faux pas_ in most educated circles.
-Yet still it is clear to anyone that playing Russian roulette is not a good choice if you wish to stay alive; even though it is not _known_ if you will die from it or not.
-Lack of deterministic knowledge about X is not a reason to stop thinking about X.
+Yet still it is clear to anyone that, if you wish to stay alive, playing Russian roulette is not a good choice.
+Lack of deterministic knowledge about something is not a reason to stop thinking.
 There are no proven and unproven statements, instead there are models and a probability distribution on them.
 
 ### Intellectuals
@@ -196,6 +192,20 @@ Any discussion, if it's honest and goes on long enough, is bound to either run i
 Intellectuals are biased when it comes to topics they talk about; there is always some new fashionable topic.
 Once some public discussion comes near the axioms the topic is usually switched to something else.
 To reach any clear conclusion it is necessary to talk about the fundamentals.
+
+### Civilization
+
+In case civilization collapses, it could be rebuilt again.
+Some core set of ideas could speed up such rebuild.
+Without such core set of ideas being preserved, the rebuild becomes less probable, it may not happen at all.
+
+### Spirituality
+
+There exists an eternal structure which is the source of all phenomena and permeates all being.
+You can, at least in part, become one with that structure.
+There exists an optimal way to systemize knowledge.
+It is bound to be rediscovered over and over again by intelligent agents.
+Even if they are in universes with laws of nature different than ours, they will converge on discovering the same structure.
 
 ## Motivation
 

@@ -24,13 +24,13 @@ Any other way to start our analysis would be to start from something we don't ha
 
 ## Strings
 
+What is the optimal way to construct a model of the world from our experience?
+To answer that question, we need to talk about experience.
 In order to talk about experience, we need to transform experience into some array of symbols.
 Commonly, this is done with words, or to use a technical term, with natural language.
 An array of symbols is called a string.
 Generally, the experience can be encoded into some array in an infinite number of ways.
 On computers, for example, you can encode images as png, jpg, etc.
-The action of encoding the totality of your experience as a string is a necessary step.
-The only alternative is to say that we can't perform such an encoding and stop there.
 
 ## Models
 
@@ -47,10 +47,9 @@ The process is unlike anything we could imagine and it's all just a big mistery.
 
 Or, we could notice patterns in the experience, and as such in the string, and we could try to understand it.
 Thus, we need a language for describing processes.
-One such language could be a one which describes finite state machines.
+One such language could be a one which describes something similar to deterministic finite automata.
 The machine can be in only one state at a time.
 There are also arrows connecting some states to other states, each arrow represents a state transition.
-Along with each state transition, there is a string which is being outputted.
-These kinds of machines are very limited, for example they can't even output a string which consists of all natural numbers.
+Along with each state transition, there is a string which is being printed.
+These kinds of machines are very limited, for example there is no simple way to make them output the first _n_ natural numbers, except hardcoding them.
 We could use pushdown automata but they suffer from the same kind of limitations.
-
