@@ -53,3 +53,26 @@ There are also arrows connecting some states to other states, each arrow represe
 Along with each state transition, there is a string which is being printed.
 These kinds of machines are very limited, for example there is no simple way to make them output the first _n_ natural numbers, except hardcoding them.
 We could use pushdown automata but they suffer from the same kind of limitations.
+The Turing machine, or a Turing-complete programming language, as the most powerful of all automata, due to Church-Turing thesis, seems like a natural choice.
+It also has a property of invariance, which is too technical to get into details, the point of which being: it's irrelevant which programming language we choose.
+
+The choice of some automata as a language for desribing processes, limits us to countable structures.
+If reality is isomorphic to some automaton, then it is countable.
+The string which describes our experience is countable, our thoughts are countable, axioms are countable, theorems are countable, and algorithms are countable.
+Thus, even if reality were an uncountable structure, the best we could do is to approximate it with some countable model.
+
+## Probability
+
+Once we have a language for desribing processes, we face the next challange: there is an infinity of models which are consistent with generating our string as output.
+Thus, we need a probability distribution on all such consistent models.
+If we have a prior distribution, Bayes theorem gives us a law of how to update that distribution based on new experience i.e. our string getting longer.
+This prior distribution can be based on some property of our models.
+Some natural properties in case of programs are length, memory and speed.
+
+## Existence
+
+Now we have our infinity of models and a probability distribution on them.
+The question is, do all of those models have the same ontological status.
+We could say they all exist, and the probability just tells us what is the probability of us appearing in them.
+Or we could say that just one model exists and the probability gives us the credence we assign to some particular model being the true one.
+
