@@ -68,7 +68,7 @@ Common sense tells us to simply rely on induction, but that does not solve the u
 
 \newpage
 
-\section{Kolmogorov complexity}
+\section{Algorithmic complexity}
 
 \subsection{Strings}
 
@@ -111,7 +111,7 @@ This is the key insight we are going to build upon.
 Let's formalize it, step by step.
 
 Take any string $s$ and find a shortest computer program $p$ which generates $s$ as output.
-The length of that program $l(p)$ is the Kolmogorov complexity of $s$, written as $K(s)$.
+The length of that program $l(p)$ is the algorithmic complexity\footnote{Also known as Kolmogorov complexity.} of $s$, written as $K(s)$.
 Our alphabet is finite; if our alphabet were infinite, each program could have its own symbol.
 That would make all programs have length 0 or 1.
 The program of length 0 is an empty string.
@@ -133,15 +133,13 @@ Once we find $p$ with output $o$ where $o = s$, we have our result.
 The problem is that when we run some $p$ it can become stuck in an infinite loop.
 We can't check for that in advance before we run it.\footnote{
 Performing such a check would solve the Halting problem, which is uncomputable.
-Is there any other way to compute Kolmogorov complexity?
-It turns out there isn't, Kolmogorov complexity is uncomputable in general.
-More about that can be found in \textit{Li, Ming; Vitányi, Paul (1997). An Introduction to Kolmogorov Complexity and Its Applications. Springer. ISBN 978-0387339986}
-From now on, the book will be referet to by the acronym \textit{AIKCIA}.
+Is there any other way to compute algorithmic complexity?
+It turns out there isn't, algorithmic complexity is uncomputable in general.
 }
 
 \newpage
 
-\begin{lstlisting}[caption={Computing the Kolmogorov complexity of a string. Do not run this at home.}]
+\begin{lstlisting}[caption={Computing the algorithmic complexity of a string. Do not run this at home.}]
 import sys
 from io import StringIO
 import contextlib
@@ -184,7 +182,7 @@ This process of simplification, of removing constraints, is crucial to problem s
 
 \newpage
 
-\begin{lstlisting}[caption={Approximating Kolmogorov complexity by limiting the number of instructions $n$ the programs are being executed, as well as the number of different programs which are being executed. As you run this for larger and larger $n$, the return value becomes smaller and smaller, until you reach $K(s)$ and the return value remains $K(s)$ from then on. We say that $K(x)$ is computable in the limit from above. If we were to modify this program so as to put a hard limit on the maximum program length, we could approximate the lower bound of $K(x)$.}]
+\begin{lstlisting}[caption={Approximating algorithmic complexity by limiting the number of instructions $n$ the programs are being executed, as well as the number of different programs which are being executed. As you run this for larger and larger $n$, the return value becomes smaller and smaller, until you reach $K(s)$ and the return value remains $K(s)$ from then on. We say that $K(x)$ is computable in the limit from above. If we were to modify this program so as to put a hard limit on the maximum program length, we could approximate the lower bound of $K(x)$.}]
 def exec_one_instruction(p):
 	# executes p for just one instruction forward 
 	# remembers where it stopped so it can continue from there next time
@@ -217,7 +215,7 @@ def kolmogorov(s, n):
 
 \subsection{Invariance}
 
-It's not important in which programming language the program is written in or what model of computation\footnote{A model of computation is a model which describes how an output of a mathematical function is computed given an input. Examples: Turing machine, random access machine, lambda calculus...} is chosen, as long as it's Turing-complete.\footnote{This result is known as the invariance theorem for Kolmogorov complexity.}
+It's not important in which programming language the program is written in or what model of computation\footnote{A model of computation is a model which describes how an output of a mathematical function is computed given an input. Examples: Turing machine, random access machine, lambda calculus...} is chosen, as long as it's Turing-complete.\footnote{This result is known as the invariance theorem for algorithmic complexity.}
 Consider a program which is very long when written in C and shorter when written in Python.
 We will call the C version $p_C$, the Python version $p_{Python}$, where $l(p_C) > l(p_{Python})$.
 Using C we can write a program $compiler_{C,Python}$ which takes Python code as as string input, translates it to C and runs the C code.
@@ -274,11 +272,11 @@ This \texttt{1} is a prediction of our theory about what we will see next.
 
 \newpage
 
-\section{Solomonoff induction}
+\section{Algorithmic induction}
 
 \subsection{Principle of multiple explanations}
 
-There are infinite possiblities for what generated $s$.\footnote{Say you observe a coin flipped $n$ times, what is the probability that the next flip will result in \textit{heads}? That is, we want to find the bias of the coin. The set of possible hypotheses is uncountably infinite if we allow each real bias in $[0, 1]$, and countably infinite if we allow each rational bias in $[0, 1]$. Example taken from \textit{AIKCIA}.}
+There are infinite possiblities for what generated $s$.\footnote{Say you observe a coin flipped $n$ times, what is the probability that the next flip will result in \textit{heads}? That is, we want to find the bias of the coin. The set of possible hypotheses is uncountably infinite if we allow each real bias in $[0, 1]$, and countably infinite if we allow each rational bias in $[0, 1]$.}
 A program is consistent with the data $s$ if its output starts with $s$, otherwise it's inconsistent.
 No matter what data we observe, there is an infinity of theories consistent with it.\footnote{"If more than one theory is consistent with the observations, keep all theories." - Epicurus.}
 This means that in an ideal case we need to have an infinite amount of theories about what's generating the data, each giving it's own prediction.
@@ -347,7 +345,7 @@ Both the sum in the numerator and the one in the denominator equal $\infty$, res
 
 \newpage
 
-\begin{lstlisting}[caption={A naive Solomonoff induction implementation, which runs into a problem with infinite sums.}]
+\begin{lstlisting}[caption={A naive algorithmic induction implementation, which runs into a problem with infinite sums.}]
 alphabet = [chr(i) for i in xrange(127)] # all ASCII characters
 
 def generate_all_programs():
@@ -400,7 +398,7 @@ def probability(outcome, s):
 
 \subsection{Prefix coding} 
 
-When approximating Solomonoff induction we can avoid the problem with infinities by limiting ourselves to only consider programs up to some length $y$.
+When approximating algorithmic induction\footnote{Also known as Solomonoff induction.} we can avoid the problem with infinities by limiting ourselves to only consider programs up to some length $y$.
 Yet, if we don't limit ourselves, we get nonsense.
 Is there any way around this?
 
@@ -453,7 +451,7 @@ We can go around that by transforming programs in the way which is described on 
 
 \newpage
 
-\begin{lstlisting}[caption={Solomonoff induction with weights being assigned on the basis of a prefix-coded program. Note that nothing is actually being transformed into a prefix string, the only use of it is to assign weights so to guarantee our sum is $\leq 1$. The rest of the functions being referenced in the code snippet here have been introduced a few pages back and they remain unchanged.}]
+\begin{lstlisting}[caption={Algorithmic induction with weights being assigned on the basis of a prefix-coded program. Note that nothing is actually being transformed into a prefix string, the only use of it is to assign weights so to guarantee our sum is $\leq 1$. The rest of the functions being referenced in the code snippet here have been introduced a few pages back and they remain unchanged.}]
 def bin_str(n):
 	# returns an integer n as a binary string, e.g. 5 -> '101'
 	return '{0:b}'.format(n)
@@ -700,7 +698,7 @@ mind = [total]
 Solipsism is similar to the hypothesis that we are living in a simulation.
 This, however, does not show that the chance we are living in a simulation is low.
 Neither does it show that there is a low \textit{prior} probability of us living in a simulation.
-In case some agent investigates the laws of physics and finds them very complex, Solomonoff induction could show that it is more likely that he is embedded in a simulation being run inside a simpler outer universe.
+In case some agent investigates the laws of physics and finds them very complex, algorithmic induction could show that it is more likely that he is embedded in a simulation being run inside a simpler outer universe.
 Of course, that outer universe needs to contain a simulation of the inner universe the agent is embedded in.
 It could be a shorter program overall.\footnote{This will be more clear after the \textit{1.6.2 Indexicality} subsection.}
 
@@ -801,7 +799,7 @@ This principle is subject to Bertrand'd paradox, which will be addressed in late
 
 In case where we have a finite number of options, the choice of the prior seems clear.
 What if we had an infinite number of options?
-In case of Solomonoff induction, instead of an uniform prior, we based our prior on the program length.
+In case of algorithmic induction, instead of an uniform prior, we based our prior on the program length.
 If instead we were to use an uniform prior, the probability of every single program would be 0.
 
 \newpage
@@ -810,7 +808,7 @@ If instead we were to use an uniform prior, the probability of every single prog
 
 \subsection{Science is both prediction and explanation}
 
-Science can be viewed as an approximation of Solomonoff induction.
+Science can be viewed as an approximation of algorithmic induction.
 Scientists search for theories which are consistent with the data.
 They use criteria which they call elegance, simplicity, and Occam's razor\footnote{“It is vain to do with more what can be done with fewer.” - William of Ockham}, which are equivalent to preferring shorter programs.
 Each program is equivalent to an explanation of how the world works.
@@ -1033,7 +1031,7 @@ The structure has effects on the programs' output, and therefore on our input.
 That which has effects on what we see is called \textit{reality}.
 
 Choice of the programming language\footnote{Or more generally, of the model of computation.}, of encoding and the location of the observer all change $p$.
-Run Solomonoff induction with choice of programming language $L_1$, encoding $E_1$, and the agent being instantiated in some spacetime location $I_1$.
+Run algorithmic induction with choice of programming language $L_1$, encoding $E_1$, and the agent being instantiated in some spacetime location $I_1$.
 The shortest program will be $p_1$.
 Now run it for $L_2$, $E_2$, $I_2$, and the shortest program will be some other $p_2$.
 There is no equivalency between program and the model of reality.
@@ -1055,7 +1053,7 @@ An observation selection effect exists when some property of a thing is correlat
 An agent can ignore all programs which are not complex enough to contain bounded-tape Turing machines within them, or something equivalent to them.
 To perform this pre-filtering the agent would need to be able to prove, for any program $p$, are the rules which generate $u$ Turing-complete or not?
 In other words, by controlling the intial state of the universe, could we represent any possible computer program?\footnote{That would also imply that by reading some later state of the universe you can retrieve the result of that computation.}
-Ordinary Solomonoff induction, used in this chapter so far, performs no such pre-filtering.
+Ordinary algorithmic induction, used in this chapter so far, performs no such pre-filtering.
 It just generates all programs which are consistent with the data, including programs which have rules which are not Turing-complete.
 
 Consider two universes $A$ and $B$.\footnote{To simplify, we can assume $l(A) = l(B)$.}
@@ -1080,7 +1078,7 @@ The sting $s$ is a product of encoding subjective conscious experience.
 This process of encoding is required if we wish to apply the theory to humans, but can digital agents receive $s$ directly from the input?
 Not exactly.
 The input $s_0$ which the digital agent receives from the environment is transformed by its internal processes and forms some organized internal structure.
-This structure is equivalent to conscious experience, and is then somehow encoded and \textit{sent}\footnote{This is impossible, but that's the view from nowhere.} as an input $s$ to Solomonoff induction.
+This structure is equivalent to conscious experience, and is then somehow encoded and \textit{sent}\footnote{This is impossible, but that's the view from nowhere.} as an input $s$ to algorithmic induction.
 Induction finds the shortest program, which instantiates a universe $u$ and maps a subset of it to $s$, meaning it maps the equivalent of \textit{positions of quarks} to $s$.
 
 The only thing we are aware of is the current moment.
@@ -1333,11 +1331,11 @@ Even if reality is something uncountable, we can at best approximate it with som
 The set of all Turing-complete programming languages is a one for which the invariance theorem holds.
 It does not matter which member of the set we choose, because for all languages $A$ and $B$ and all strings $x$ there exists a constatnt $c$ such that $K_A(x) \leq K_B(x) + c$, as explained in the \textit{1.2.4 Invariance} subsection.
 This is important since the goal is to have a method which assigns probability on the basis of the objects themselves, not based on the method used to describe them.
-The invariance theorem does not hold in general for all description methods.\footnote{As explained in \textit{AIKCIA}, section \textit{2.1 The Invariance Theorem}.}
+The invariance theorem does not hold in general for all description methods.
 It is our conjecture that invariance holds only for Turing machines.
 
 The other property which should hold is that of convergence.
-Whatever the true process which generated the data is, Solomonoff induction converges very fast to the true process, provided the process is computable.\footnote{\textit{AIKCIA}, section \textit{5.2.3 Covergence in Ratio}.}
+Whatever the true process which generated the data is, algorithmic induction converges very fast to the true process, provided the process is computable.
 It is our conjecture that no other choice of the prior converges faster.
 Since our assumptions seem minimal, we claim this is the optimal theory of everything.
 
@@ -1449,3 +1447,4 @@ As our knowledge keeps widening and deepening, at some time all philosophical pr
 % https://ai-alignment.com/inaccessible-information-c749c6a88ce
 % https://www.lesswrong.com/posts/roA83jDvq7F2epnHK/better-priors-as-a-safety-problem
 % https://www.lesswrong.com/posts/SL9mKhgdmDKXmxwE4/learning-the-prior
+% https://www.lesswrong.com/posts/Tr7tAyt5zZpdTwTQK/the-solomonoff-prior-is-malign
