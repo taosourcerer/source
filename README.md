@@ -263,11 +263,3 @@ Some additional desiderata which are fulfilled:
 ## References
 
 A list of references can be found here: [bibliography.md](https://github.com/taosourcerer/source/blob/master/bibliography.md)
-
-## Support
-
-This project grows organically by word of mouth.
-Increasing the number of readers increases the number of reviews and critiques, which makes the project better.
-If you like the project please share it to at least two other people who you think may also like it.
-
-You can also support the project by donating BTC to this address: `198L5jAWXBm5DBmVaNYN15b3SAMn5iao8z`
