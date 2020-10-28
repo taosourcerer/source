@@ -51,10 +51,18 @@ One such language could be a one which describes something similar to determinis
 The machine can be in only one state at a time.
 There are also arrows connecting some states to other states, each arrow represents a state transition.
 Along with each state transition, there is a string which is being printed.
+
+todo example
+
 These kinds of machines are very limited, for example there is no simple way to make them output the first _n_ natural numbers, except hardcoding them.
 We could use pushdown automata but they suffer from the same kind of limitations.
+
+todo example
+
 The Turing machine, or a Turing-complete programming language, as the most powerful of all automata, due to Church-Turing thesis, seems like a natural choice.
 It also has a property of invariance, which is too technical to get into details, the point of which being: it's irrelevant which programming language we choose.
+
+todo example
 
 The choice of some automata as a language for desribing processes, limits us to countable structures.
 If reality is isomorphic to some automaton, then it is countable.
