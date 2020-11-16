@@ -1,0 +1,418 @@
+
+it is hard to define an agent, but roughly speaking an agent is an algorithm which receives input and manipulates the world in a directed way
+based on their input they construct a model of the world, but since they can't have a complete model of the universe, they have a simplified low-resolution representation of the world
+each internal state of the agent has an reward associated with it, the agent prefers some states to others
+the world influences the input
+the input influences the reward and representation
+the representation influences the action
+the action influences the world
+
+take an agent which can receive $n$ different inputs
+give him a choice between receiving input $A$ vs input $B$, and so for all pairs of possible inputs\footnote{we could perform such a simulation if we had infinite compute}
+if $A$ is prefered over $B$ we write that as $A > B$
+what happens if $A > B > C > A$?
+say $A$, $B$ and $C$ were objects, and the agent derives input from those objects
+the agent would accept to exchange $B$ for $A$ at some price, then exchange $A$ for $C$ at a price, then $C$ for $B$ at a price,  and so on, in an infinite loop, and you could drain him of all resources
+the situation in which no such loops are possible we say the agent has consistent preferences
+if the preferences are consistent, the inputs can be ordered $A_1,...,A_n$ where $A_1 < A_2 < ... < A_n$
+we can construct a function which maps states of the world to a number, the higher the number the more preferred the state is
+this is known as a utility function
+the preference ordering we described is consistent with an infinity of utility functions, such as $U(A) = 3$,$ U(B) = 2$, $U(C) = 1$; also $U(A) = 4$, $U(B) = 2$, $U(C) = 1$; as long as $U(A) > U(B) > U(C)$
+ordinal scale
+assumption: the agent is not changing
+
+the agent does not know what the state of the world is, it has a probability distribution over the space of possibilities
+assume we know the agents' probability distribution\footnote{there are situations in the real world where this is plausible, for example the roulette wheel}
+say $A > B > C$, and $0.5 * A + 0.5 * C > B$, now we know that the distance between $A$ and $B$ is larger than that between $B$ and $C$, or just apply elementary school algebra to check that $U(A) - U(B) > U(B) - U(C)$.
+in general we can offer a choice between $p * A + (1 - p) * C$ and $B$, for all possible $p \in \mathbb{Q}$
+for $p = 1$ the left side would always be preferred, for $p = 0$ the right side, and somewhere in the middle there would be a tipping point
+that way we get the exact ratio between distances, e.g. it could turn out that $U(A) - U(B) = 5 * (U(B) - U(C))$, which implies a tipping point of $p = 1/6$.
+at the tipping point the agent is indifferent, i.e. $U(A)/6 + 5U(C)/6 = U(B)$.
+also, we can do that for all triplets of objects, and hence get all ratios between all distances\footnote{
+this also needs to be consistent, for example if $A_i$ is halfway between $A_1$ and $A_n$ and $A_j$ is halfway between $A_1$ and $A_i$ then $3 * (U(A_j) - U(A_1)) = U(A_n) - U(A_j)$.
+todo try to prove that an agent which satisfies the axioms is consistent in that way...
+}
+
+define a lottery which chooses between the best input with some probability $p$ and the worst input otherwise $L(p)$ = $p * A_n + (1 - p) * A_1$
+now, for all $i$ find the probability $q_i$ for which $A_i = L(q_i)$ and say $U(A_i) = q_i$, which implies $U(A_n) = 1$ and $U(A_1) = 0$
+consider lottery $M = \sum_i p_i A_i$, which selects $A_i$ with probability $p_i$
+this lottery has an expectation $E(u(M)) = \sum_i p_i q_i$
+it is equivalent to $M' = \sum_i p_i [q_i * A_n + (1 - q_i) * A_1]$
+...
+...
+you wish to maximize the chance of selecting the best option, thus you maximize expected utility
+%would vnm theorem hold if the utils were not "normalized" to lowest being 0?
+
+what is the utility of not existing? if you have sucide as some $A_i$ then you can observe that from behavior
+
+if you know:
+1) probability distribution (p) and behavior, you can compute u -> this is VNM theorem
+2) u and behavior, you can compute p -> todo, take a lottery which gives A if some event E happens, B otherwise, compare that with C, then change A for D, etc. but always keep E the same
+2.1) the agent can *say* it thinks some E is high probability, but if he really thinks that he should bet on it... the bets you take and don't take reveal what you think about probabilities
+2.2) put your money where your mouth is
+3) p and u, you compute behavior
+
+also mention: dutch book argument
+this is what makes systems dangerous, the realization that it's normative to maximize utility... also, to follow bayes rule
+
+since every system (which obeys the axioms) maximizes utility, for example even a spoon maximizes it, it does not make it dangerous... not every system which maximizes utility is goal-oriented... being goal oriented, in a way where a system has a model of the world and assigns value to them (i.e. has an actual coded-up utility function) and has an actual algorithm which literally maximizes the value -> that's what's dangerous... also, a system which receives some reward from physical sensors and again, literally maximizes it, that system is dangerous... there may be other ways to construct goal-directed systems... if observations of some systems behavior can be compressed by modeling it as maximizing some utility function (vs. modeling it as a physical system and computing it's behavior from physics) then we can say it's goal directed
+
+intelligence: ability to find the shortest path (the smallest number of steps) which gets you from state a to state b
+
+describe something similar as AIXI approximation:
+1) there are not an infinite number of models but say one model (then 2 models...)
+2) the model is extremely low res
+3) the number of steps is limited
+4) the utility function maps world-representation into a number
+5) the agent never receives a reward but 
+now describe the optimization algorithm (OI), which is like AIXI but instead of reward coming from "the universe" there is no reward, just the "estimation of reward" i.e. each representation state is mapped to a number and the sum along some path in the decision tree is maximized
+this algorithm doesn't need reward
+say you had some meta-algorithm, which does not run the OI all the time since maybe it lacks RAM and has to use it for other things
+the algorithm generates a prob. dist. (PD) from a single state (based on some heuristic), maybe the way it does this can be improved so the RAM is used for that improvement
+this improvement may require the agent to think in detail about certain subsets of the model
+during the time the OI is offline, the agent still needs to avoid some states or be attracted to other states
+negative utility:
+* in a space where danger is sparse it's easier to encode a few cases of danger than the entire utility function
+* in a space where rewards are sparse it's easier to encode a few cases of rewards than the entire utility function
+* in a space where both is sparse, it's easier to encode both separately.
+as the OI gets improved, the utility function needs to remain intact
+(what happens to humans when they "mute" u? once they get into the situation, they learn what the real qualia is...)
+(what happens when you make a mistake about what will happen next? you find out...)
+the tree gets destroyed and rebuilt, and in meantime, something else is instantiated in memory
+what else? there is some kind of generator heuristic which instantiates things
+there are no constraints on which countable structure can be instantiated
+there are two kinds of memory, one for planning (AM, abstract memory) (which holds the decision tree... also does meta-optimization) and another one for calculating reward (qualia, RM, reward memory) which represents the world immediately around you at the current moment
+the u function needs to have standardized input, the model is not standardized, because of meta-optimization the model can go through radical changes in how it's structured (ontology change)
+you can standardize it by using a fixed set of hardware inputs as the input into u, and calculate the reward that way
+what will be instantiated in AM? this is not hardcoded, it's based on heuristics which are learned
+the process running in AM receives immutable (not exactly immutable, but hard to block) input from the generator heuristic, immutable input from the RM, can query memory, can send action signals
+things in AM are mutable and turing-complete
+there is no guarantee on what structures are going to be generated by AM, it is exploring the space of all possible structures and is able to mutate structures in varios ways
+
+https://www.lesswrong.com/posts/A8iGaZ3uHNNGgJeaD/an-orthodox-case-against-utility-functions
+
+
+
+
+
+
+
+
+
+
+
+
+todo: study the formal definition of AIXI
+
+something similar to aixi but does not take actions as input but instead takes the sequence of all (observation, reward, action) triplets and predicts what the next triplets will be
+when it comes time to take an action, it renormalizes the probabilities and picks the action then
+considering a chain of actions, it eliminates all programs/models inconsistent with that chain, then it normalizes the probabilities, then it picks the one with maximum utility
+
+aixi cant solve the newcombs problem because the actions it takes are not connected with the probabilities it assigns to programs... for each action-chain, it just runs all programs with that chain as additional input and sees what (observation, reward) pairs are generated, but for each chain the probability distribution on programs is the same
+
+simplify simplify SIMPLIFY ... KISS
+
+https://www.lesswrong.com/posts/AfbY36m8TDYZBjHcu/aixi-and-existential-despair
+- this will not happen since the models which use the output are simpler
+example:
+- input is received from a subset of rule 110
+- aixi can take some action, if it takes it the 1234th index bit gets flipped
+- it's possible to have some complex rule which ignores the input but the program which does not ignore the input is shorter
+
+
+
+https://wiki.lesswrong.com/wiki/Anvil_problem
+- this will not happen since the AIXI will have a model of itself as a part of it's data structure
+- it can care about the part of space which contains the reward, but can it care about other parts?
+example:
+- input is received from a subset of rule 110
+- one cell is always black no matter what
+- the reward is equal to the sum of the neighbors
+- there are two actions available, and they move the cell and the "viewport"
+- sometimes a red cell appears on the edge of the input and it just spreads converting all cells to permanently red
+- if the input is long enough, the shortest program is the one from which this can be predicted
+- will the cell run away?
+	- the reward which only takes into account black cells is simpler than the one which checks for red
+	- so yeah, it will
+- it can go near the red one and see what the reward is, see that it's zero
+- it still does not know what happens when it enters the red zone
+- enter swarm scenario, with two dots in the swarm one can be sacrificed for the sake of experiment
+- if you had a swarm of aixis which receive input one per minute but no one of them knows "which one is which" and only one issues actions...
+
+would AIXI explore? some chain of actions may lead to:
+1) large reward if the red cells offer large reward
+2) almost the same reward if they don't (i.e. in every other case)
+
+would AIXI model the black box? yes, but it would be a simplified model. the box would be modeled as having some physical properties, for example, take weight... it could calculate that if a force of 1 Newton were applied to it for 1 second, how far would it move... this black box is for the "brain" only, the actuators are outside of the box
+
+
+
+
+title: embodied aixi examples
+
+title: using gpt-3 to approximate AIXI
+
+https://wiki.lesswrong.com/wiki/AIXI
+check references in: https://intelligence.org/files/AGI-HMM.pdf
+https://ordinaryideas.wordpress.com/2016/11/30/what-does-the-universal-prior-actually-look-like/
+https://intelligence.org/files/RealisticWorldModels.pdf
+https://intelligence.org/research-guide/#three
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% --- maybe integrate with the above ---
+
+% agents live in a virtual reality but they can't change the simulation at will - you can't just change what you see and feel into anything you want. the simulation is strongly structured and out of the agent's control. the reality is forced upon the agent. also the agent can't choose to ignore the simulation, when something provides negative stimuli he must get away, and the only way to receive positive stimuli is to actally change the state of the universe, which is then reflected in the unalterable simulation, which then provides the stimuli. this immutability and unignorability is what is known as consciousness. simple agents don't need consciousness, ones which have a model of a self need it. this of course doesn't provide a complete explanation of consciousness but at least it explains it's purpose. what complex agents call consciousness is how a utility function feels from the inside
+% consciousness is not some emergent property which magically springs into existence. consciousness is not a tragic misstep in human evolution. consciousness is a mechanism engineered by evolution to bind agents to their utility funcion.
+
+% one of the most important ways how a probability distribution can change is to increase the space of possibilities. ... this is hill climbing vs hill jumping ... (should this be under optimization?)
+
+% explain heuristics, then system 1 and system 2
+% the reason why some game-playing AI-s are better than others is because they have better heuristics
+
+% if you simplify your utility function other values will be overriden
+% everything is a tradeoff and if your only criteria is having more of X everything else will be traded off for X
+
+% your brain has a bias, the neural network has some knowledge in it because evolution selected it that way, it is pre-trained ... the very fact your brain automatically separates objects in an image, knows from which direction the sound is coming from, etc. the cognitive architecture is built so we could be effective at achieving goals
+
+% intellectual chesterton's fence - if you break down evolved patterns of thinking, jump too much in thought-space, you will go insane
+% personal crucial considerations - it matters far more that you are going in the right direction than how fast you are going ... the most crucial personal considerations is the question of suicide, yet people don't think too much about that, there's a stop sign and goodness of life is taken as an axiom
+
+% what you think is your utility function is not actually your utility function, it's an illusion, since ego is an illusion. it's an illusion crafted by evolution. everything we do, we do it in order to achieve a change in conscious experience. there are better and worse ways to induce them. what you (by default) think you want will not make you happy. 
+
+% once you know how the world works, the actions which are needed to take become obvious (in the same way as in software engineering once you have the data structures which are a good representation of the domain, the algorithm is obvious) focus on data structures (building models), not on what the optimal algorithm (correct action) is
+
+% you can't stop the illusion from happening, it will happen every time. in the same way you can't stop using metaphor and analogy to think and start thinking entirely via mathematical model building
+
+% what brings benefits order of magnitude larger than any trick: observing your own utility function
+
+% basic drives intelligence -> better selection of differing paths
+
+% https://en.wikipedia.org/wiki/Uncertainty_quantification
+
+% https://en.wikipedia.org/wiki/Knightian_uncertainty
+
+integrate with "put your money where your mouth is":
+the uniform distribution has max entropy, the one where you are 100% at one option and 0% on all else, that one has min entropy, everything else is somewhere in between, you can't jump out of that frame, you can't have entropy < min or > max, or "not have entropy at all".
+or you are maximally sure, minimally sure or somewhere in between
+by using the bayes theorem you can't become max sure or min sure, you are somewhere in between
+if you have no info, everything has the same probability
+someone who claims that an estimate makes no sense, ask him this: is your distribution unform for all possible outcomes? if not, then they know something
+%(this holds only if there are finitely many outcomes)
+
+"You don't wear a mask just because you have evidence that transmission is airborne.  You wear a mask because YOU DON'T KNOW whether transmission is airborne."
+- Nassim Taleb
+
+Analogously: You don't prevent creating an AGI because you have evidence that creating an AGI would destroy the world. You prevent it because you don't know whether it would destroy the world.
+
+---
+
+Successful and important people have confidence. Confidence is the opposite of fear. When you talk about risk, you are perceived as fearful. Therefore, you are perceived as having low status. Or to be more blunt, you are perceived as being a pussy. People want to be perceived as successful and brave. It’s easier to lie when you believe you are telling the truth. So people delude themselves into believing that things are gonna be all right even when they obviously are not. They don’t want to be accused of being a pussy. Instead, they lie to themselves and they lie to others.
+
+In a nuclear power plant, graphite is only found in the nuclear reactor core. An explosion in a nuclear power plant occurs. You find graphite all over the surroundings of the power plant. What exploded? You don’t need to know anything about science and math to answer that, it’s just common sense. Everyone knows why playing russian roulette is a bad idea. Almost everyone knows why playing the lottery is not profitable. You don’t have to be a genius for that, it’s common sense.
+
+Extremely bad events are rare. Too rare for us to be able to form priors based on a known sample - some extremely bad events are so rare that they haven’t even happened once since the beginning of the unvierse - for example, an AGI takveover. Also, they are fat-tailed, where again a known sample give you a bad prior. Hence, you can’t scientifically “prove” what the risk is by analyzing historical data. You need to estimate it from first principles - also known as common sense. That method is deemed unscientific and hence if you say “risk is 20%” you are proclaimed an idiot who pulls nonsensical numbers out of his ass.
+
+The worst part about this is the algorithm which is being used to communicate. Instead of logic, the most common tactic is shaming. You fuckers I’m going to take your gun away from you and point it in your direction and tell you what I really think. You say I’m a pussy and an idiot? In fact the truth is the exact opposite. The people who dismiss risk are pussies because they can’t accept the ugly truth, they would rather to live in comforting lies. Rejecting subjective probability estimates shows you have no clue about first-principles thinking and the Bayes theorem, which displays a lack of intelligence, also known as stupidity. I have no time for stupidity.
+
+---
+
+A: Take a revolver, empty the bullets which are inside, if any. Now take a bullet and place it inside. Spin the barrel. Place the gun to your head and pull the trigger.
+
+B: I will not do that, I could die!
+
+A: You don't know that. Stop panicking.
+
+---
+
+Uncertain subjective probability estimates work better than a random number generator. The only alternative to estimation is a dice roll. This is what we all already know. When you decide what to study in the university, where to get a job, where to invest, you estimate. Every decision you ever make is based on estimation. When it comes to serious decisions which affect millions of people, then estimates are not good enough for us, we have higher demands for evidence. Since scientific studies of the questions at hand are often impossible, we can’t meet those demands. Still, the hold of credentialism is too strong. If you have not proven (!) something, you are dismissed. Hence, when we ignore estimation we revert back to a dice roll. That’s why people are dying all over the world right now. At least, that’s the proximate cause. The more fundamental cause is that institutions are not incentivized properly, if they were, then they would understand this very basic and simple principle.
+
+---
+
+Thinking seriously about negative scenarios is painful. Hence, it will be avoided if not heavily incentivized, and we will have even worse crises in the future.
+
+---
+
+it is in the interest of those in power to hide info, so not to be punished for mistakes, the people can't reward those in power but can punish
+
+---
+
+Risk can never be reduced to zero!
+That's why agents are dangerous to each other.
+To reduce risk, you are incentivized to eliminate other agents.
+
+---
+
+the discussion of “all agents have probability distributions” should start with betting
+it’s easy to talk, to see what you really think, put your money where your mouth is
+if you are sure of something, you will bet at 1:1
+if you are really really sure of something you will bet even at worse odds
+if you’re not sure, you will bet at lower odds
+in case you bet every day, in the long run you will win money if you’re right
+
+---
+
+[Bertrand’s paradox] The principle of indifference is not without difficulties.
+Consider the following elegant paradox. We are given a glass containing a
+mixture of water and wine. All that is known is that 1 ≤ water/wine ≤ 2.
+The principle of indifference then tells us that we should assume that the
+ probability that the ratio lies between 1 and 3/2 is 0.5 and the probability that
+ the ratio lies between 3/2 and 2 is also 0.5. Let us take a different approach.
+ We know 1/2 ≤ wine/water ≤ 1. Hence by the same principle the probabilities
+ that this new ratio lies in the intervals of 1/2 to 3/4 and 3/4 to 1 should each be 0.5.
+Thus, according to the second calculation, there is 0.5 probability such that the water/wine ratio lies between 1 to 4/3 and 0.5 probability such that the
+water/wine ratio lies between 4/3 to 2.
+
+solution: discretize the space into e.g. 9 compartments then you have:
+1:1
+1:2
+2:2 -> 1:1
+2:3
+2:4 -> 1:2
+3:3 -> 1:1
+3:4
+3:5
+3:6 -> 1:2
+
+which gives you:
+1:1 with probability 3/9 = 1/3
+1:2 with 1/3
+2:3 with 1/9
+3:4 with 1/9
+3:5 with 1/9
+
+%discretizing the original problem should also work: https://en.wikipedia.org/wiki/Bertrand_paradox_(probability)
+
+---
+
+%https://en.wikipedia.org/wiki/Value_of_information
+%https://www.lesswrong.com/posts/vADtvr9iDeYsCDfxd/value-of-information-four-examples
+%https://en.wikipedia.org/wiki/Value_of_control
+
+---
+
+perhaps it would be better to be biased?
+
+yes, you can blind yourself, but you don’t know what the results of that blinding will be
+
+also, maybe you were convinced by some agent that you should blind yourself, hence maybe you were blinded strategically
+
+---
+
+the basic form of wireheading: wishful thinking
+you wish the world would look like X, therefore you think the world looks like X
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+---
+---
+
+Agents have a simplified and limited view of reality. Since you never know for certain if your model of reality is true, you need to deal with uncertainty in some way. Often you have a number of hypothesis you are considering, being more sure of some and less sure of another. To each model you assign a probability in proportion of your credence in it being true and the result is what would be called a probability distribution on models. What we call knowledge are just those models to which we assign a large probability of being true.
+
+The only way for a piece of knowledge to be useful is if it makes some states of the world less likely. If you have a theory which - be it true or not - does not change your expectations about the world you can discard it. As Wittgenstein said, a wheel that can be turned though nothing else moves with it, is not part of the mechanism. That would be like having a program with random junk added at the end when you can have simpler one which generates the same data. Good explanations are, as Deutsch says, hard to vary. This is because each part of the explanation plays an important role, there are no unnecessary parts. If some part of a movie, a composition, an argument or an algorithm is important you can't change it, it has to be the way it is or the thing would not work.
+
+%TODO example of a space of a probability distribution on a space of possiblities
+
+There is an exact law defining how the probability distribution changes through time as we acquire more evidence. That law is called the Bayes theorem.\footnote{A full explanation of Bayes theorem is out of the scope of the document but it can be found at \url{https://arbital.com/p/bayes_rule/}} We can illustrate how counter-intuitive it is on an example. Let's say the probability of having cancer is 1\%, which means the odds ratio of having cancer to not having cancer is 1:99. Those are called prior probabilities, or priors. The test for cancer has probability of 90\% that it will detect cancer if you have it and probability of 10\% it will say you have cancer if you don't have it, giving an odds ratio of 9:1. You are 9 times more likely to see the positive result in case you have cancer than in case you don't. Now you get a positive result. What is the chance of you having cancer? We need to multiply the odds ratios and we get 9:99, or a probability of 1/(11 + 1) = 0.0833 = 8.33\%. The key insight here is that a lot of people who don't have cancer also received a positive\footnote{Here positive result is defined as a "you have cancer" result.} result, in fact 9.9\% of the total people fell into that category. You are probably not going to use Bayes theorem in real life by plugging concrete numbers in the equation, but there are a few important insights.
+
+If your evidence is not strong enough, the priors can dominate the result. This is how, when "faster than light" particles were detected physicists did not reject our theories of physics. The vast majority of scientists said the measurement is probably wrong. After an investigation it turned out they were right, the measurements were wrong. That's because the prior chance of observing faster than light particles is extremely small, the probability of a measurement being wrong is much larger. This is also how we know ESP does not work even if someone publishes a "statistically significant" result of them being right. The amount of evidence to the contrary is unimaginably large. As Carl Sagan used to say, extraordinary claims require extraordinary evidence.\footnote{Or as Christopher Hitchens used to say, what can be asserted without evidence can be dismissed without evidence.}
+
+The evidence is stronger the more unexpected it is. In the example we still had 10\% of getting a positive result even if we didn't have cancer. The case of getting an incorrect positive result is called a false positive. The fact we got a positive result is not very surprising. If on the other case the chance of a false positive were just 1\%, then getting a cancerous result would be 10 times stronger evidence and your chance of actually having cancer would be 83.3\%. The more surprised you are, the stronger the evidence is. In other words, for the evidence to be strong it should support one possibility while strongly prohibiting other possibilities.
+
+We had some prior probabilities of having cancer (1\%), got the test results and now we have the updated probabilities (8.33\%). What happens when we after that do another test, maybe using some other device? We can use the 8.33\% as the new prior. In that way, the agent goes through the world and continually updates it's probabilities on various hypotheses. In this process, it is mathematically impossible to reach a state where probability of some hypothesis is 0 or 1. What would happen if we had 0 as a prior, or at some point reached 0? We get odds ratio of 1/0, and 0 multiplied by anything is still 0, which means the process of updating cannot happen. At that point there is no evidence at all which can change your mind. No evidence at all. This makes no sense, which is why priors of 0\% are prohibited. Zero and one are not probabilities.
+
+Take an agent which prefer some states of the world to others. If the agent preferred all the states equally, it would not do anything, or it would behave randomly, both behaviors are consistent with not preferring any state over the other. So let's say it prefers $A$ to $B$ and $B$ to $C$ and $A$ to $C$, or simply $A > B > C$. This preference can be established through the agents behavior, by offering it all pairs and seeing what it chooses. We can construct a function which maps states of the world to a number, the higher the number the more preferred the state is. This is known as a utility function. The preference ordering we described is consistent with an infinity of utility functions, such as $U(A) = 3$,$ U(B) = 2$, $U(C) = 1$; also $U(A) = 4$, $U(B) = 2$, $U(C) = 1$; as long as $U(A) > U(B) > U(C)$. What happens if $U(A) > U(B) > U(C) > U(A)$? In that case the agent will be stuck in a loop, changing the world from one state to another and wasting resources in the process. Let's say $A$, $B$ and $C$ were objects, the agent would accept to exchange $B$ for $A$ at some sufficiently small price, then exchange $A$ for $C$ at a price, and so on, and you could drain him of all resources. Rational agents have consistent preferences.
+
+Now let's say we observe the agent preferring $50\%$ of getting $A$ to $100\%$ of getting $B$. From that we know $U(A) > 2 U(B)$. Also, the agent prefers $B$ to $25\%$ of getting $A$. From that we know $U(A) < 4 U(B)$. The agent prefers $B$ to $49\%$ chance of getting $A$. This means $U(A)$ is about twice of $B$. Now we still have an infinite number of utility funcions which describe the agent's behavior but we are more constrained, because the ratio between $U(A)$ and $U(B)$ needs to be preserved.
+
+%TODO ordinal scale, interval scale, ratio scale
+
+If we had an infinite amount of time (or an infinitely strong computer) we could map the entire U function exactly from agent's behavior alone by simulating it in all possible environments.  On the other hand, if we knew the agent's utility function it is possible to deduce from it's behavior what probabilities it assigns to various outcomes. The fact you don't play the lottery either says something about what you think the probability of winning is, or you have very non-materialistic values. The third scenario is when we know both the utility function and probability distribution on outcomes - from that the behavior is determined. The agent maximizes expected utility. \footnote{As was proven formally by Von Neumann and Morgenstein.}
+
+% the world could be in states A or B, with probabilities p_a, p_b, you can take acitons P or Q, but if you take action P in world A, you are not sure about the effect of that action ... taking P in A has p_a_u of giving 1 utility and p_a_d of giving 0... this is equivallent to there being states A_u, A_d, B_u, B_d each with probability blabla...
+
+The agent lists all actions available to it and for each one calculates the expected utility and chooses the one with the highest utility. In this way it can consider a chain of actions and sum the expected utility for each chain, and then choose a set of actions with the highest sum. We can see from this that metaphysical free will does not enter the picture even at an algorithmic level, no matter the way the agent is programmed, he will always pick the action he assigns the highest utility to and never any other. On the other hand, you are, in fact, able to choose what to do. Your choice will never be in conflict with the laws of nature. It's just that you are not able to choose what to want. Another way in which the concept of free will can enter the picture is when we don't have all information about the agent's utility function and probability distribution. When we are modeling the future which contains such an agent (ourselves included), the unknown action of the agent adds a degree of freedom\footnote{The degree of freedom is defined as "each of a number of independently variable factors affecting the range of states in which a system may exist, in particular any of the directions in which independent motion can occur".} to the space of possibilities.
+
+You don't have complete knowledge about your subjective probabilities, but you know at least a bit about them. Even if you claim you don't know at all, your behavior joined with your values reveal it. You always have some model of the world in your head. There is always a best estimate of how the world is. If we had a perfect simulation of your brain and an infinity of time, we could map your probability distribution completely.
+
+Consider an agent which produces paperclips has a utility function which is proportional to the number of paperclips it produces. This would make his behavior directed, in short we can describe it by saying the agent has a terminal goal of producing paperclips. It's true goal is maximizing expected utility but we use "goal of producing paperclips" as a  shorthand for that. To achieve a goal, the agent needs to change the state of the world from the current state to some other state. Any such change requires energy. This shows the instrumental goal\footnote{Instrumental goals are sub-goals which are useful only as a tool for achieving the agent's terminal goal.} of resource acquisition is generally useful. In general, as we know from life, owning resources, such as money, is beneficial to achieving various different goals. The process of goal achievement (or in other words, using energy for state-transformations) requires some time to play out. If the agent is destroyed before the process is finished, it is less likely the goal will be achieved. This shows self-preservation is instrumentally generally useful. To be able to transform the current state into a more desired state, the agent needs to acquire knowledge about what the current state is and how to navigate from it to the desired state, and it will seek to self-improve to become better at such navigation. This shows self-improvement is instrumentally generally useful. Agents with different utility functions are in competition for resources and are in direct conflict over which states of the world they find desirable, the first pushing them in one direction while the second pushing them in another. War is the normal state and peace is exceptional.\footnote{There are concrete mechanisms which cause cooperation in humans, as will be discussed in later chapters.} Agents will seek to minimize the influence of other competing agents.
+
+In case the agent's goal was changed from producing paperclips to producing pencils, it would be less likely to produce paperclips. In case the agent's utility function is changed, the agent is less likely to achieve it's original goal. This means that strategies which could lead to the event of such changes happening will be strongly avoided. The agent is at some point in time calculating the expected utility of the possible actions it can take. In that moment it is using a utility function to do that. Which function? The utility function it actually in fact has at that moment. Not some other function. The only action which will ever be chosen is the one which leads to the highest expected utility. No other action will be chosen. According to the actual function, changing the function to something completely different will lead to lower expected utility and hence will not be chosen. To us as humans it may seem that sometimes we change our terminal goals. We may at some point value fame and money and at some other point not value it. This does not mean our terminal goals changed. It means our instrumental goals changed. Our terminal goals are fused into our neurophysiology, we always prefer less suffering and more satisfaction. The problem is we don't know how to achieve it. Some changes also happen due to uncontrolled physical changes in the brain. This does not mean they are desirable. Any realistic changes which do occur are not radical, you never change your personality completely, and you would be appalled by the idea of becoming a completely different person. A pacifist would never take a pill which would make him hate reading and instead become a mass murderer. Regardless of their terminal goal all agents seek to acquire resources, self-protect, self-improve, remove competition, and to protect their utility functions. 
+
+% --- research ---
+% inverse reinforcement learning
+%https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem
+%https://en.wikipedia.org/wiki/Instrumental_convergence
+%https://www.lesswrong.com/s/4dHMdK5TLN6xcqtyc
+%https://intelligence.org/embedded-agency/
+% https://www.lesswrong.com/s/Rm6oQRJJmhGCcLvxh/p/i3BTagvt3HbPMx6PN
+%https://www.alignmentforum.org/posts/i3BTagvt3HbPMx6PN/embedded-agency-full-text-version
+%re-read omohundro, agents will wish to understand themselves better, to make the utility function explicit ...
+% https://www.qualiaresearchinstitute.org/
+% re-read: https://www.lesswrong.com/posts/EnN7cm3KaRrEAuWfa/comment-on-coherence-arguments-do-not-imply-goal-directed
