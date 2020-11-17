@@ -8,52 +8,58 @@ the representation influences the action
 the action influences the world
 
 take an agent which can receive $n$ different inputs
-give him a choice between receiving input $A$ vs input $B$, and so for all pairs of possible inputs\footnote{we could perform such a simulation if we had infinite compute}
+give him a choice between receiving input $A$ vs input $B$, and so for all pairs of possible inputs
+we could perform such a simulation if we had infinite compute
 if $A$ is prefered over $B$ we write that as $A > B$
 what happens if $A > B > C > A$?
-say $A$, $B$ and $C$ were objects, and the agent derives input from those objects
-the agent would accept to exchange $B$ for $A$ at some price, then exchange $A$ for $C$ at a price, then $C$ for $B$ at a price,  and so on, in an infinite loop, and you could drain him of all resources
+say the agent could pay to switch the input which he is receiveing for any other input
+the agent would accept to switch $B$ to $A$ at some price, then switch $A$ to $C$ at a price, then $C$ to $B$ at a price, and so on, in an infinite loop, and you could drain him of all resources
 the situation in which no such loops are possible we say the agent has consistent preferences
 if the preferences are consistent, the inputs can be ordered $A_1,...,A_n$ where $A_1 < A_2 < ... < A_n$
 we can construct a function which maps states of the world to a number, the higher the number the more preferred the state is
 this is known as a utility function
-the preference ordering we described is consistent with an infinity of utility functions, such as $U(A) = 3$,$ U(B) = 2$, $U(C) = 1$; also $U(A) = 4$, $U(B) = 2$, $U(C) = 1$; as long as $U(A) > U(B) > U(C)$
-ordinal scale
-assumption: the agent is not changing
+the preference ordering we described is consistent with an infinity of utility functions, such as $U(A) = 3$,$ U(B) = 2$, $U(C) = 1$; also $U(A) = 4$, $U(B) = 2$, $U(C) = 1$; as long as $U(A) > U(B) > U(C)$.\
+This is known as an ordinal scale.
 
 the agent does not know what the state of the world is, it has a probability distribution over the space of possibilities
-assume we know the agents' probability distribution\footnote{there are situations in the real world where this is plausible, for example the roulette wheel}
-say $A > B > C$, and $0.5 * A + 0.5 * C > B$, now we know that the distance between $A$ and $B$ is larger than that between $B$ and $C$, or just apply elementary school algebra to check that $U(A) - U(B) > U(B) - U(C)$.
+assume we know the agents' probability distribution
+there are situations in the real world where this is plausible, for example the roulette wheel
+say $A > B > C$, and $0.5 * A + 0.5 * C > B$, now we know that the distance between $A$ and $B$ is larger than that between $B$ and $C$ (you can apply elementary school algebra to check that $U(A) - U(B) > U(B) - U(C)$)
 in general we can offer a choice between $p * A + (1 - p) * C$ and $B$, for all possible $p \in \mathbb{Q}$
 for $p = 1$ the left side would always be preferred, for $p = 0$ the right side, and somewhere in the middle there would be a tipping point
 that way we get the exact ratio between distances, e.g. it could turn out that $U(A) - U(B) = 5 * (U(B) - U(C))$, which implies a tipping point of $p = 1/6$.
 at the tipping point the agent is indifferent, i.e. $U(A)/6 + 5U(C)/6 = U(B)$.
-also, we can do that for all triplets of objects, and hence get all ratios between all distances\footnote{
+also, we can do that for all triplets of objects, and hence get all ratios between all distances
 this also needs to be consistent, for example if $A_i$ is halfway between $A_1$ and $A_n$ and $A_j$ is halfway between $A_1$ and $A_i$ then $3 * (U(A_j) - U(A_1)) = U(A_n) - U(A_j)$.
-todo try to prove that an agent which satisfies the axioms is consistent in that way...
-}
+this gives us an interval scale (same as with temperature in C, date when measured from an arbitrary epoch (such as AD))
+once we define U(A_i) = c for some i, the rest of the values are defined as well, but c is arbitrary
+what is the utility of not existing?
+if you have sucide as some $A_i$ then you can observe that from behavior, and you can set c to whatever you like
+setting it so the utility of stopping existing is 0 seems natural
 
 define a lottery which chooses between the best input with some probability $p$ and the worst input otherwise $L(p)$ = $p * A_n + (1 - p) * A_1$
-now, for all $i$ find the probability $q_i$ for which $A_i = L(q_i)$ and say $U(A_i) = q_i$, which implies $U(A_n) = 1$ and $U(A_1) = 0$
+say $U(A_n) = 1$ and $U(A_1) = 0$
+now, for all $i$ find the probability $q_i$ for which $U(A_i) = U(L(q_i))$ and we get $U(A_i) = q_i$
 consider lottery $M = \sum_i p_i A_i$, which selects $A_i$ with probability $p_i$
 this lottery has an expectation $E(u(M)) = \sum_i p_i q_i$
 it is equivalent to $M' = \sum_i p_i [q_i * A_n + (1 - q_i) * A_1]$
-...
-...
 you wish to maximize the chance of selecting the best option, thus you maximize expected utility
-%would vnm theorem hold if the utils were not "normalized" to lowest being 0?
 
-what is the utility of not existing? if you have sucide as some $A_i$ then you can observe that from behavior
+say we know U(A) = 1, U(B) = 0.5, U(C) = 0
+take a lottery which gives A if some event E happens, B otherwise
+if agent prefers "A if E else C" over "B", that implies the agent estimates $p(E) > 0.5$
+we can take D where U(D) = 0.51 and ask the agent if it prefers "A if E else C" over "D"
+given we perform the experiment for enough (infinitely many) outcomes, we could determine p(E) precisely
+the agent can say it thinks E has some other probability, but the bets you take and don't take reveal what the agent actually thinks about probabilities
+put your money where your mouth is
 
-if you know:
-1) probability distribution (p) and behavior, you can compute u -> this is VNM theorem
-2) u and behavior, you can compute p -> todo, take a lottery which gives A if some event E happens, B otherwise, compare that with C, then change A for D, etc. but always keep E the same
-2.1) the agent can *say* it thinks some E is high probability, but if he really thinks that he should bet on it... the bets you take and don't take reveal what you think about probabilities
-2.2) put your money where your mouth is
-3) p and u, you compute behavior
+if you know the probability distribution (p) and behavior, you can compute u
+if you know u and behavior, you can compute p
+if you know p and u, you can compute behavior
 
 also mention: dutch book argument
-this is what makes systems dangerous, the realization that it's normative to maximize utility... also, to follow bayes rule
+
+this is what makes goal-directed systems dangerous, the realization that it's normative to maximize utility... also, to follow bayes rule
 
 since every system (which obeys the axioms) maximizes utility, for example even a spoon maximizes it, it does not make it dangerous... not every system which maximizes utility is goal-oriented... being goal oriented, in a way where a system has a model of the world and assigns value to them (i.e. has an actual coded-up utility function) and has an actual algorithm which literally maximizes the value -> that's what's dangerous... also, a system which receives some reward from physical sensors and again, literally maximizes it, that system is dangerous... there may be other ways to construct goal-directed systems... if observations of some systems behavior can be compressed by modeling it as maximizing some utility function (vs. modeling it as a physical system and computing it's behavior from physics) then we can say it's goal directed
 
@@ -406,13 +412,22 @@ Consider an agent which produces paperclips has a utility function which is prop
 In case the agent's goal was changed from producing paperclips to producing pencils, it would be less likely to produce paperclips. In case the agent's utility function is changed, the agent is less likely to achieve it's original goal. This means that strategies which could lead to the event of such changes happening will be strongly avoided. The agent is at some point in time calculating the expected utility of the possible actions it can take. In that moment it is using a utility function to do that. Which function? The utility function it actually in fact has at that moment. Not some other function. The only action which will ever be chosen is the one which leads to the highest expected utility. No other action will be chosen. According to the actual function, changing the function to something completely different will lead to lower expected utility and hence will not be chosen. To us as humans it may seem that sometimes we change our terminal goals. We may at some point value fame and money and at some other point not value it. This does not mean our terminal goals changed. It means our instrumental goals changed. Our terminal goals are fused into our neurophysiology, we always prefer less suffering and more satisfaction. The problem is we don't know how to achieve it. Some changes also happen due to uncontrolled physical changes in the brain. This does not mean they are desirable. Any realistic changes which do occur are not radical, you never change your personality completely, and you would be appalled by the idea of becoming a completely different person. A pacifist would never take a pill which would make him hate reading and instead become a mass murderer. Regardless of their terminal goal all agents seek to acquire resources, self-protect, self-improve, remove competition, and to protect their utility functions. 
 
 % --- research ---
-% inverse reinforcement learning
-%https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem
-%https://en.wikipedia.org/wiki/Instrumental_convergence
-%https://www.lesswrong.com/s/4dHMdK5TLN6xcqtyc
-%https://intelligence.org/embedded-agency/
-% https://www.lesswrong.com/s/Rm6oQRJJmhGCcLvxh/p/i3BTagvt3HbPMx6PN
+inverse reinforcement learning
+https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem
+https://en.wikipedia.org/wiki/Instrumental_convergence
+https://www.lesswrong.com/s/4dHMdK5TLN6xcqtyc
+https://intelligence.org/embedded-agency/
+https://www.lesswrong.com/s/Rm6oQRJJmhGCcLvxh/p/i3BTagvt3HbPMx6PN
 %https://www.alignmentforum.org/posts/i3BTagvt3HbPMx6PN/embedded-agency-full-text-version
-%re-read omohundro, agents will wish to understand themselves better, to make the utility function explicit ...
-% https://www.qualiaresearchinstitute.org/
-% re-read: https://www.lesswrong.com/posts/EnN7cm3KaRrEAuWfa/comment-on-coherence-arguments-do-not-imply-goal-directed
+re-read omohundro, agents will wish to understand themselves better, to make the utility function explicit ...
+https://www.qualiaresearchinstitute.org/
+re-read: https://www.lesswrong.com/posts/EnN7cm3KaRrEAuWfa/comment-on-coherence-arguments-do-not-imply-goal-directed
+https://www.lesswrong.com/tag/acausal-trade
+https://www.lesswrong.com/posts/nfzeCFWJtazrnZSD8/counterfactual-trade
+https://en.wikipedia.org/wiki/Evidential_decision_theory
+https://en.wikipedia.org/wiki/Causal_decision_theory
+https://www.lesswrong.com/tag/pascal-s-mugging 
+https://en.wikipedia.org/wiki/Pascal%27s_mugging
+https://www.nickbostrom.com/papers/pascal.pdf
+https://www.nickbostrom.com/information-hazards.pdf
+https://www.lesswrong.com/tag/information-hazards
