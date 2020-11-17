@@ -100,6 +100,15 @@ Source creates a structure which connects all of knowledge.
 This structure offers a natural traversal of knowledge, a flowing sequence of questions and answers.
 It provides a way to systematically propagate implications.
 
+### Crucial considerations
+
+It does not matter how fast you're going if you're going in the wrong direction.
+Should we colonize the galaxy?
+It depends on other questions regarding ethics and regarding the nature of consciousness.
+Suddenly you can find your compass is broken and everything you have been working towards has been misdirected.
+This could happen at any time: some new perspective emerges, a consideration appears which you previously overlooked, you encounter an _unknown unknown_ which renders your work obsolete and you need to go back to square one.
+These kinds of considerations are often related to foundational questions, which is precisely what _Source_ is about.
+
 ### Inferential distance reduction
 
 Our species lived through a number of revolutions in information technology.
