@@ -1,5 +1,6 @@
 
-it is hard to define an agent, but roughly speaking an agent is an algorithm which receives input and manipulates the world in a directed way
+an agent is an algorithm which acts in a goal-directed way\footnote{Exactly what goal-directed means will be defined later}
+roughly speaking, it receives input and manipulates the world in a directed way
 based on their input they construct a model of the world, but since they can't have a complete model of the universe, they have a simplified low-resolution representation of the world
 each internal state of the agent has an reward associated with it, the agent prefers some states to others
 the world influences the input
@@ -28,7 +29,7 @@ say $A > B > C$, and $0.5 * A + 0.5 * C > B$, now we know that the distance betw
 in general we can offer a choice between $p * A + (1 - p) * C$ and $B$, for all possible $p \in \mathbb{Q}$
 for $p = 1$ the left side would always be preferred, for $p = 0$ the right side, and somewhere in the middle there would be a tipping point
 that way we get the exact ratio between distances, e.g. it could turn out that $U(A) - U(B) = 5 * (U(B) - U(C))$, which implies a tipping point of $p = 1/6$.
-at the tipping point the agent is indifferent, i.e. $U(A)/6 + 5U(C)/6 = U(B)$.
+at the tipping point the agent is indifferent, e.g. $U(A)/6 + 5U(C)/6 = U(B)$.
 also, we can do that for all triplets of objects, and hence get all ratios between all distances
 this also needs to be consistent, for example if $A_i$ is halfway between $A_1$ and $A_n$ and $A_j$ is halfway between $A_1$ and $A_i$ then $3 * (U(A_j) - U(A_1)) = U(A_n) - U(A_j)$.
 this gives us an interval scale (same as with temperature in C, date when measured from an arbitrary epoch (such as AD))
@@ -37,13 +38,24 @@ what is the utility of not existing?
 if you have sucide as some $A_i$ then you can observe that from behavior, and you can set c to whatever you like
 setting it so the utility of stopping existing is 0 seems natural
 
+there are n options, from worst to best: A_1,...,A_n
 define a lottery which chooses between the best input with some probability $p$ and the worst input otherwise $L(p)$ = $p * A_n + (1 - p) * A_1$
 say $U(A_n) = 1$ and $U(A_1) = 0$
 now, for all $i$ find the probability $q_i$ for which $U(A_i) = U(L(q_i))$ and we get $U(A_i) = q_i$
 consider lottery $M = \sum_i p_i A_i$, which selects $A_i$ with probability $p_i$
-this lottery has an expectation $E(u(M)) = \sum_i p_i q_i$
-it is equivalent to $M' = \sum_i p_i [q_i * A_n + (1 - q_i) * A_1]$
-you wish to maximize the chance of selecting the best option, thus you maximize expected utility
+this lottery has an expectation $E(U(M)) = \sum_i p_i q_i$
+it is equivalent to $E(U(M))' = \sum_i p_i [q_i * U(A_n) + (1 - q_i) * U(A_1)]$ = \sum_i (p_i * q_i) * U(A_n) = U(M) * U(A_n)
+the lottery M' is equivalent to a lottery in which the best outcome is won with probability U(M)
+out of a number of different lotteries, you pick the one which has the greatest chance of selecting the best option, thus you select the one which has the greatest expected utility
+this result holds if an agent satisfies what is known as the four axioms of VNM-rationality, all of which are sensible:
+Axiom 1 (Completeness) For any lotteries A, B, exactly one of the following holds: U(A) > U(B), U(B) > U(A), U(A) = U(B)
+Axiom 2 (Transitivity) If U(A) > U(B) and U(B) > U(C) then U(A) > U(C) (same for equality)
+Axiom 3 (Continuity): If U(A) <= U(B) <= U(C) then there exists a probability p such that p*U(A) + (1-p)*U(C) = U(B)
+Axiom 4 (Independence): For any C and p statement A <= B is equivalent to p*A + (1-p)*C <= p*B + (1-p)*C
+
+the fact that some system follows those axioms does not make it goal-directed
+even a spoon, which does not act at all, is consistent with those axioms, where it assigns the same U(A_i) for all A_i
+if observations of some systems behavior can be compressed by modeling it as maximizing some utility function (vs. modeling it as a physical system and computing it's behavior from physics) then we can say it's goal directed
 
 say we know U(A) = 1, U(B) = 0.5, U(C) = 0
 take a lottery which gives A if some event E happens, B otherwise
@@ -57,13 +69,18 @@ if you know the probability distribution (p) and behavior, you can compute u
 if you know u and behavior, you can compute p
 if you know p and u, you can compute behavior
 
-also mention: dutch book argument
+the ways agents reason about probability need to satisfy the axioms of probability, such as for example to add up to 1
+if there is an agent which assigns x = p(A) + p(not-A); x > 1 he would be willing to pay y, where x > y > 1, to play in a lottery which pays L = p(A) + p(not-A), since he values E(L) = x > y
+playing this lottery, in the long run, the house always wins\footnote{
+this is known as a Dutch-book argument}
+from the requirement that they need to satisfy the axioms of probability, and the definition of conditional probability, Bayes' theorem follows
 
-this is what makes goal-directed systems dangerous, the realization that it's normative to maximize utility... also, to follow bayes rule
+intelligence: ability to maximize utility
+a more intelligent system can find a larger number of ways to transform the state of the world
+hence it can find ways which take less time or consume less energy
+a more intelligent agent, given the same amount of time and the same amount of energy and starting from the same state of the world (excluding the agent which we treat as a black box), can reach a wider set of states (set A) than a less intelligent one (set B), meaning B is a proper subset of A.
 
-since every system (which obeys the axioms) maximizes utility, for example even a spoon maximizes it, it does not make it dangerous... not every system which maximizes utility is goal-oriented... being goal oriented, in a way where a system has a model of the world and assigns value to them (i.e. has an actual coded-up utility function) and has an actual algorithm which literally maximizes the value -> that's what's dangerous... also, a system which receives some reward from physical sensors and again, literally maximizes it, that system is dangerous... there may be other ways to construct goal-directed systems... if observations of some systems behavior can be compressed by modeling it as maximizing some utility function (vs. modeling it as a physical system and computing it's behavior from physics) then we can say it's goal directed
-
-intelligence: ability to find the shortest path (the smallest number of steps) which gets you from state a to state b
+% bookmark
 
 describe something similar as AIXI approximation:
 1) there are not an infinite number of models but say one model (then 2 models...)
@@ -95,19 +112,6 @@ the process running in AM receives immutable (not exactly immutable, but hard to
 things in AM are mutable and turing-complete
 there is no guarantee on what structures are going to be generated by AM, it is exploring the space of all possible structures and is able to mutate structures in varios ways
 
-https://www.lesswrong.com/posts/A8iGaZ3uHNNGgJeaD/an-orthodox-case-against-utility-functions
-
-
-
-
-
-
-
-
-
-
-
-
 todo: study the formal definition of AIXI
 
 something similar to aixi but does not take actions as input but instead takes the sequence of all (observation, reward, action) triplets and predicts what the next triplets will be
@@ -124,8 +128,6 @@ example:
 - input is received from a subset of rule 110
 - aixi can take some action, if it takes it the 1234th index bit gets flipped
 - it's possible to have some complex rule which ignores the input but the program which does not ignore the input is shorter
-
-
 
 https://wiki.lesswrong.com/wiki/Anvil_problem
 - this will not happen since the AIXI will have a model of itself as a part of it's data structure
@@ -151,50 +153,11 @@ would AIXI explore? some chain of actions may lead to:
 
 would AIXI model the black box? yes, but it would be a simplified model. the box would be modeled as having some physical properties, for example, take weight... it could calculate that if a force of 1 Newton were applied to it for 1 second, how far would it move... this black box is for the "brain" only, the actuators are outside of the box
 
-
-
-
-title: embodied aixi examples
-
-title: using gpt-3 to approximate AIXI
-
 https://wiki.lesswrong.com/wiki/AIXI
 check references in: https://intelligence.org/files/AGI-HMM.pdf
 https://ordinaryideas.wordpress.com/2016/11/30/what-does-the-universal-prior-actually-look-like/
 https://intelligence.org/files/RealisticWorldModels.pdf
 https://intelligence.org/research-guide/#three
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 % --- maybe integrate with the above ---
 
@@ -338,45 +301,6 @@ also, maybe you were convinced by some agent that you should blind yourself, hen
 the basic form of wireheading: wishful thinking
 you wish the world would look like X, therefore you think the world looks like X
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
----
 ---
 
 Agents have a simplified and limited view of reality. Since you never know for certain if your model of reality is true, you need to deal with uncertainty in some way. Often you have a number of hypothesis you are considering, being more sure of some and less sure of another. To each model you assign a probability in proportion of your credence in it being true and the result is what would be called a probability distribution on models. What we call knowledge are just those models to which we assign a large probability of being true.
@@ -412,16 +336,15 @@ Consider an agent which produces paperclips has a utility function which is prop
 In case the agent's goal was changed from producing paperclips to producing pencils, it would be less likely to produce paperclips. In case the agent's utility function is changed, the agent is less likely to achieve it's original goal. This means that strategies which could lead to the event of such changes happening will be strongly avoided. The agent is at some point in time calculating the expected utility of the possible actions it can take. In that moment it is using a utility function to do that. Which function? The utility function it actually in fact has at that moment. Not some other function. The only action which will ever be chosen is the one which leads to the highest expected utility. No other action will be chosen. According to the actual function, changing the function to something completely different will lead to lower expected utility and hence will not be chosen. To us as humans it may seem that sometimes we change our terminal goals. We may at some point value fame and money and at some other point not value it. This does not mean our terminal goals changed. It means our instrumental goals changed. Our terminal goals are fused into our neurophysiology, we always prefer less suffering and more satisfaction. The problem is we don't know how to achieve it. Some changes also happen due to uncontrolled physical changes in the brain. This does not mean they are desirable. Any realistic changes which do occur are not radical, you never change your personality completely, and you would be appalled by the idea of becoming a completely different person. A pacifist would never take a pill which would make him hate reading and instead become a mass murderer. Regardless of their terminal goal all agents seek to acquire resources, self-protect, self-improve, remove competition, and to protect their utility functions. 
 
 % --- research ---
-inverse reinforcement learning
+https://www.lesswrong.com/s/HmANELvkhAZ9eDxFS - Consequences of Logical Induction
+https://www.lesswrong.com/posts/A8iGaZ3uHNNGgJeaD/an-orthodox-case-against-utility-functions
 https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem
 https://en.wikipedia.org/wiki/Instrumental_convergence
 https://www.lesswrong.com/s/4dHMdK5TLN6xcqtyc
 https://intelligence.org/embedded-agency/
 https://www.lesswrong.com/s/Rm6oQRJJmhGCcLvxh/p/i3BTagvt3HbPMx6PN
 %https://www.alignmentforum.org/posts/i3BTagvt3HbPMx6PN/embedded-agency-full-text-version
-re-read omohundro, agents will wish to understand themselves better, to make the utility function explicit ...
 https://www.qualiaresearchinstitute.org/
-re-read: https://www.lesswrong.com/posts/EnN7cm3KaRrEAuWfa/comment-on-coherence-arguments-do-not-imply-goal-directed
 https://www.lesswrong.com/tag/acausal-trade
 https://www.lesswrong.com/posts/nfzeCFWJtazrnZSD8/counterfactual-trade
 https://en.wikipedia.org/wiki/Evidential_decision_theory
@@ -431,3 +354,8 @@ https://en.wikipedia.org/wiki/Pascal%27s_mugging
 https://www.nickbostrom.com/papers/pascal.pdf
 https://www.nickbostrom.com/information-hazards.pdf
 https://www.lesswrong.com/tag/information-hazards
+https://en.wikipedia.org/wiki/Expected_utility_hypothesis
+https://plato.stanford.edu/entries/dutch-book/
+re-read: https://www.lesswrong.com/posts/EnN7cm3KaRrEAuWfa/comment-on-coherence-arguments-do-not-imply-goal-directed
+re-read omohundro, agents will wish to understand themselves better, to make the utility function explicit ...
+inverse reinforcement learning
