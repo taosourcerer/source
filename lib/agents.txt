@@ -8,6 +8,18 @@ the input influences the reward and representation
 the representation influences the action
 the action influences the world
 
+the simplest example would be this: the world consists of a single bit, initialized as 0
+the agent can observe the whole world and it can output a single bit
+the state of the world depends on the previous state and the output of the agent, state = previous XOR output
+the agent prefers the state where he observes 1 to the one where he observes 0
+thus, what happens is that the agent observes 0, outputs 1, the state becomes 1 and stays that way
+
+todo code example
+p would have some receive_action() function, and send_output() funciton
+there would be another program a, which has receive_output() function and a send_action() function
+then a in for loop reads the output and based on each peace of output it sends an action
+there is no solomonoff here, just a one simple world
+
 take an agent which can receive $n$ different inputs
 give him a choice between receiving input $A$ vs input $B$, and so for all pairs of possible inputs
 we could perform such a simulation if we had infinite compute
@@ -22,8 +34,15 @@ this is known as a utility function
 the preference ordering we described is consistent with an infinity of utility functions, such as $U(A) = 3$,$ U(B) = 2$, $U(C) = 1$; also $U(A) = 4$, $U(B) = 2$, $U(C) = 1$; as long as $U(A) > U(B) > U(C)$.\
 This is known as an ordinal scale.
 
-the agent does not know what the state of the world is, it has a probability distribution over the space of possibilities
-assume we know the agents' probability distribution
+the agent can't observe the whole world at once
+it does not know what the state of the world is, it has a probability distribution over the space of possibilities
+even if it could observe everything, it would never have certainty about the "physical" laws, therefore it would have uncertainty about the future states
+both uncertainty about the state and uncertainty about the laws are captured by solomonoff induction: we are uncertain about program p
+each p, when we run it until it produces s (the string we observed) and stop the execution, defines roughly what state of the world we are in (as explained in the encoding subsection as u_(p,i))
+there exist p_1 and p_2 which have the same laws but different current state
+also there exist p_a and p_b which have the same state but different laws
+
+assume we know the agents' probability distribution about any event
 there are situations in the real world where this is plausible, for example the roulette wheel
 say $A > B > C$, and $0.5 * A + 0.5 * C > B$, now we know that the distance between $A$ and $B$ is larger than that between $B$ and $C$ (you can apply elementary school algebra to check that $U(A) - U(B) > U(B) - U(C)$)
 in general we can offer a choice between $p * A + (1 - p) * C$ and $B$, for all possible $p \in \mathbb{Q}$
@@ -56,6 +75,8 @@ Axiom 4 (Independence): For any C and p statement A <= B is equivalent to p*A + 
 the fact that some system follows those axioms does not make it goal-directed
 even a spoon, which does not act at all, is consistent with those axioms, where it assigns the same U(A_i) for all A_i
 if observations of some systems behavior can be compressed by modeling it as maximizing some utility function (vs. modeling it as a physical system and computing it's behavior from physics) then we can say it's goal directed
+the utility which is described by VNM is descriptive, it treats the agent as a black box, it works regardless of implementation
+goal directed systems need to have some other form of utility which (quite unlike a spoon) drives them to actually perform updates of the world
 
 say we know U(A) = 1, U(B) = 0.5, U(C) = 0
 take a lottery which gives A if some event E happens, B otherwise
@@ -75,21 +96,32 @@ playing this lottery, in the long run, the house always wins\footnote{
 this is known as a Dutch-book argument}
 from the requirement that they need to satisfy the axioms of probability, and the definition of conditional probability, Bayes' theorem follows
 
-intelligence: ability to maximize utility
+intelligence: ability to maximize utility for an arbitrary utility function
 a more intelligent system can find a larger number of ways to transform the state of the world
 hence it can find ways which take less time or consume less energy
 a more intelligent agent, given the same amount of time and the same amount of energy and starting from the same state of the world (excluding the agent which we treat as a black box), can reach a wider set of states (set A) than a less intelligent one (set B), meaning B is a proper subset of A.
+we say the agent can reach a state Y starting from state X if it can transform the state of the world (our "physical universe") from state X to state Y
+
+take an agent playing tic-tac-toe, it can represent the board as d = [None] * 9
+then as some cell gets turned to O it places 0, as X it places 1
+against whom is the agent playing?
+could be against some program, or against a human (which is, in fact, the same thing), but in any case, the opponenet is a part of the p's state u and the engine, the opponent is a part of "how the world gets updated"
+
+todo code example
+same scheme as above
+but now the agent each time after receiving new output (it receives from an unknown program which is the actual universe), runs solomonoff to get all ps
+this time the solmonoff is different, it generates the set of all possible programs but also programs receive a context (a dict of variables)
+in this context there is a single variable which in it has the agent's output up to that point (it uses it for implementing receive_action())
+then it generates all possible sequences of actions
+then for each sequence it calls simulate(p, seq) (where again seq is used to implement receive_action())
+each time before a new action is taken, simulate yields globals()
+u is a function which receives globals()
+the one who called simulate calculates u and adds them all up
+then, the next action in the sequence with max(u * prob(p)) is performed
+the agent never receives a "reward" from the universe, it just calculates u and does whichever maximizes the expectation of u
 
 % bookmark
 
-describe something similar as AIXI approximation:
-1) there are not an infinite number of models but say one model (then 2 models...)
-2) the model is extremely low res
-3) the number of steps is limited
-4) the utility function maps world-representation into a number
-5) the agent never receives a reward but 
-now describe the optimization algorithm (OI), which is like AIXI but instead of reward coming from "the universe" there is no reward, just the "estimation of reward" i.e. each representation state is mapped to a number and the sum along some path in the decision tree is maximized
-this algorithm doesn't need reward
 say you had some meta-algorithm, which does not run the OI all the time since maybe it lacks RAM and has to use it for other things
 the algorithm generates a prob. dist. (PD) from a single state (based on some heuristic), maybe the way it does this can be improved so the RAM is used for that improvement
 this improvement may require the agent to think in detail about certain subsets of the model
