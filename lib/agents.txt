@@ -151,6 +151,11 @@ however small the box is, it needs to be a part which generates the decision (si
 a part of the world could be correlated with the internal state of the black box
 in other words, a part of the world, external to the agent, can be correlated (at distance) with the decision
 it can even be correlated with future decisions (it can predict the agent)
+change the code from above so that now first all possible actions are generated (up to d steps ahead) and all past actions + future actions are fed as input to p
+so now there is no separate simulate function
+
+implication: choosing a set of actions changes the prob. dist. you have over ps
+this implication hold for all agents which one-box on newcombs paradox -> their decision changes what they believe about the state of the world (box + state of the agent who predicted them)
 
 todo: study the formal definition of AIXI
 
