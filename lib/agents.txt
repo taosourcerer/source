@@ -404,3 +404,7 @@ https://plato.stanford.edu/entries/dutch-book/
 re-read: https://www.lesswrong.com/posts/EnN7cm3KaRrEAuWfa/comment-on-coherence-arguments-do-not-imply-goal-directed
 re-read omohundro, agents will wish to understand themselves better, to make the utility function explicit ...
 inverse reinforcement learning
+https://arxiv.org/abs/1110.6437 - Anthropic decision theory
+https://www.lesswrong.com/posts/4ZRDXv7nffodjv477/anthropic-reasoning-isn-t-magic
+https://www.lesswrong.com/posts/nxRjC93AmsFkfDYQj/anthropic-probabilities-answering-different-questions
+https://www.lesswrong.com/posts/uAqs5Q3aGEen3nKeX/anthropics-is-pretty-normal
