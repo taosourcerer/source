@@ -61,10 +61,10 @@ Some of that is knowledge of specifics, such as the layout of the streets of som
 Other knowledge is that of abstractions, the ways in which reality is structured, the root causes of events, the mechanisms which determine how things behave.
 Our abstract knowledge is divided into philosophy, mathematics, algorithms, physics, chemistry, biology, economics, etc.
 Yet, a unifying picture of how it all fits together is nowhere to be found.
-The interfaces between different fields remain undescribed.
+The interfaces between fields remain undescribed.
 Thinking from first principles leads to an unbroken thread of implications.
-Following this thread, insights from a wide range of different fields emerge, naturally integrated.
-Areas of our knowledge are not islands that are loosely connected to each other, but knowledge is a solid block which we carved into separate areas only to make it easier to study.
+Following this thread, insights from a wide range of fields emerge, naturally integrated.
+Areas of our knowledge are not islands loosely connected to each other, but knowledge is a solid block which we carved into separate areas only to make it easier to study.
 This project aims to present a unified picture of the world.
 There is a difference between being able to build parts of a car and being able to build a whole working car.
 The difference is, among other things, in the questions you ask.
@@ -92,9 +92,9 @@ Our goal is to ask the right questions and to build good intuition.
 ### Belief propagation
 
 Our beliefs always have some implications we are not aware of.
-Given more time, absent any new evidence, there are still conclusions we could deduce by thinking alone.
+Given more time, absent any new evidence, there are new conclusions we could deduce by thinking alone.
 Our knowledge is connected like a network.
-When you learn about topic X, it should change what you think about other topics that are connected to X.
+When you learn about topic X, it should change what you think about other topics connected to X.
 The process of implication propagation is not automatic, it is intentional, and driven by concrete needs to solve problems.
 Source creates a structure that connects all of knowledge.
 This structure offers a natural traversal of knowledge, a flowing sequence of questions and answers.
@@ -106,7 +106,7 @@ It does not matter how fast you're going if you're going in the wrong direction.
 Should we colonize the galaxy?
 It depends on other questions regarding ethics and regarding the nature of consciousness.
 Suddenly you can find your compass is broken and everything you have been working towards has been misdirected.
-This could happen at any time: some new perspective emerges, a consideration appears which you previously overlooked, you encounter an _unknown unknown_ which renders your work obsolete and you need to go back to square one.
+This could happen at any time: a new perspective emerges, a consideration appears which you previously overlooked, you encounter an _unknown unknown_ which renders your work obsolete and you need to go back to square one.
 These kinds of considerations are often related to foundational questions, which is precisely what _Source_ is about.
 
 ### Inferential distance reduction
@@ -175,7 +175,7 @@ One elegant way to hide information is to simply make the data hard or impossibl
 Another is to make it needlessly hard to understand.
 The more complex the phenomenon is, the easier it is to cherry-pick.
 Since all data is subject to cherry-picking, what would happen if we would just ignore all data?
-A metaphysical theory of everything would happen.
+A metaphysical theory of everything would emerge.
 Anything which depends on empirical data is hard to verify.
 Deduction from axioms can be verified easily.
 
@@ -197,9 +197,9 @@ There are no proven and unproven statements, instead, there are models and a pro
 
 Arguments are not isolated.
 We can't talk about anything without talking about the entire universe.
-Any discussion, if it's honest and goes on long enough, is bound to either run in circles, or to regress infinitely, or to reach the fundamental axioms of worldviews.
-Intellectuals are biased when it comes to topics they talk about; there is always some new fashionable topic.
-Once some public discussion comes near the axioms the topic is usually switched to something else.
+Any discussion, if it's honest and goes on long enough, is bound to either run in circles, or to digress infinitely, or to reach the fundamental axioms of worldviews.
+Intellectuals are biased when it comes to topics they talk about, there is always some new fashionable topic.
+Once public discussion comes near the axioms the topic is usually switched to something else.
 To reach any clear conclusion it is necessary to talk about the fundamentals.
 
 ### Civilization
