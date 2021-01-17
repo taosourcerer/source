@@ -186,12 +186,8 @@ This is impossible since science is incomplete.
 It leaves many problems open, as evident from philosophy of science.
 Science does not inform you what to study at the university, what job to apply to, where to invest, and in general what to do in life.
 To do that, some other way of thinking is needed.
-In general, people often place statements into two distinct sets, proven and unproven.
-On things that are deemed "proven", if you disagree with science then you are considered to be low-status.
-Talking about things that are "not known" is deemed as speculation, it is a _faux pas_ in most educated circles.
-Yet still, it is clear to anyone that, if you wish to stay alive, playing Russian roulette is not a good choice.
-Lack of deterministic knowledge about something is not a reason to stop thinking.
-There are no proven and unproven statements, instead, there are models and a probability distribution on them.
+People often place statements into two distinct sets, proven and unproven.
+In fact, there are no proven and unproven statements, instead, we have models and a probability distribution on them.
 
 ### Intellectuals
 
