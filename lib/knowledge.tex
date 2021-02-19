@@ -833,9 +833,6 @@ A program which compresses our astronomical data perfectly would need to take in
 The third reason is because the domain of the problem is purposefully reduced for practical reasons, so it can be easier to attack and solve the problem at hand.
 To model something complex it's often useful to first model a simplified version of it.\footnote{Also, there is a tradeoff between \textit{making the model more complex and more prone to overfitting} on the one side, and \textit{making the model simpler but increasing the error of the hypothesis} on the other.}
 
-% todo AIKCIA:
-% (Section 5.4) balances the complexity of the model—and its tendency for overfitting—against the preciseness of fitting the data—the error of the hypothesis. 
-
 Theories which explain a lot of different phenomena at the same time while being simple are said to have greater explanatory power.
 That is because they have greater rate of compression, which would be the length of data divided by the length of the program.
 Hence, explanatory power is directly proportional to probability.
@@ -982,8 +979,6 @@ In case there is a bijection between $o_{(p_i,n)}$ and $o_{(p_j,n)}$, there shou
 The nonexistance of such a bijection that would imply the existence some data in $u_{(p_i,n)}$ which has no effect on output and is different from the one in $u_{(p_j,n)}$.
 That seems unexpected considering $p$ is the shortest consistent program.
 Even if two agents choose different encodings, the engines of their programs shoud be equivalent.
-
-% todo formal proof of bijection for different encodings with same amount of info
 
 \newpage
 
@@ -1195,7 +1190,6 @@ Therefore, you can choose between $regress + axioms$, $circular + axioms$ and $a
 The latter is simpler.
 
 Axiom 2 does not limit us to finite structures, nor to discrete\footnote{In mathematics, there is no clear definiton what discrete or continuous means, but it is possible to generate structures which we would intuitively call continous. This is a subject for the next chapter.} structures, but it does limit us to countable structures. Also, it assumes the world is inherently deterministic.
-% btw solomonoff works even when the world is inherently stohastic (li, vitanyi, chapter 5.2), being e.g. a probabilistic Turing machine or, say, a Markov process
 
 Is a better theory possible?
 Any such theory would need to assume axiom 1, and it would also still need to explain every other thing Source explains.
@@ -1216,8 +1210,6 @@ Every theory needs a description method in order to describe the set of possible
 We could have selected a deterministic finite automaton.\footnote{To any such DFA we need to add an extra mechanism for generating output.}
 They can't even generate a sequence of natural numbers.
 We selected to use a Turing machine or a Turing-complete programming language.\footnote{Also known as a partial recursive function, also known as a partial computable function.}
-% can https://en.wikipedia.org/wiki/Pushdown_automaton generate all natural numbers?
-%todo https://en.wikipedia.org/wiki/Chomsky_hierarchy
 
 Once we have a set of possible structures $S$, a prior probability distribution on $S$ is needed.
 The distribution can't be uniform, as then the probability of each structure would be 0.
@@ -1399,54 +1391,3 @@ This is an example of how philosophical problems can be turned into math, and so
 As our knowledge keeps widening and deepening, at some time all philosophical problems shall be transmuted into math and solved.
 
 \newpage
-
-% ########################################################################################################
-% ########################################## RESEARCH ####################################################
-% ########################################################################################################
-
-% subjectivity -> encoding
-% - the question of is there a bijeciton between two states may depend on https://en.wikipedia.org/wiki/Mutual_information between those states
-
-% explain why kolmogorov is optimal compression
-% should be somewhere in these papers:
-% A Preliminary Report on a General Theory of Inductive Inference
-% "A Formal Theory of Inductive Inference," Part 1 and Part 2 in Information and Control.
-
-% The concept and theory of Kolmogorov Complexity is based on a crucial theorem first discovered by Ray Solomonoff, who published it in 1960, describing it in "A Preliminary Report on a General Theory of Inductive Inference"[3] as part of his invention of algorithmic probability. He gave a more complete description in his 1964 publications, "A Formal Theory of Inductive Inference," Part 1 and Part 2 in Information and Control.[4][5] Andrey Kolmogorov later independently published this theorem in Problems Inform. Transmission[6] in 1965. Gregory Chaitin also presents this theorem in J. ACM – Chaitin's paper was submitted October 1966 and revised in December 1968, and cites both Solomonoff's and Kolmogorov's papers.[7] The theorem says that, among algorithms that decode strings from their descriptions (codes), there exists an optimal one. This algorithm, for all strings, allows codes as short as allowed by any other algorithm up to an additive constant that depends on the algorithms, but not on the strings themselves. Solomonoff used this algorithm and the code lengths it allows to define a "universal probability" of a string on which inductive inference of the subsequent digits of the string can be based. Kolmogorov used this theorem to define several functions of strings, including complexity, randomness, and information. 
-
-% https://arbital.com/p/solomonoff_induction/?l=1hh
-% https://www.lesswrong.com/posts/Kyc5dFDzBg4WccrbK/an-intuitive-explanation-of-solomonoff-induction
-% https://www.lesswrong.com/posts/fC248GwrWLT4Dkjf6/open-problems-related-to-solomonoff-induction
-% https://www.lesswrong.com/posts/5pgsbB5sqC2wLwr4d/how-bayes-theorem-is-consistent-with-solomonoff-induction
-% https://wiki.lesswrong.com/wiki/Solomonoff_induction
-% https://wiki.lesswrong.com/wiki/Naturalized_induction
-
-% https://intelligence.org/research-guide/#three
-
-% https://wiki.lesswrong.com/wiki/AIXI
-
-% https://en.wikipedia.org/wiki/Algorithmic_probability
-% https://en.wikipedia.org/wiki/Solomonoff%27s_theory_of_inductive_inference
-
-% schmidhuber speed prior
-
-% eric demaine mit - proving things are turing complete
-
-% https://en.wikipedia.org/wiki/Digital_physics
-% https://en.wikipedia.org/wiki/Carl_Friedrich_von_Weizs%C3%A4cker#Theory_of_ur-alternatives
-% https://en.wikipedia.org/wiki/Philosophy_of_physics
-
-% http://www.scholarpedia.org/article/Algorithmic_probability
-
-% li, vitany -> chapter 5 on Inductive Reasoning
-% page 262 -> Measure Theory
-% measure -> each subset of a set is assigned a number, Countable additivity
-% probability measure -> measure of the whole set is 1
-
-% https://ordinaryideas.wordpress.com/2016/11/30/what-does-the-universal-prior-actually-look-like/
-% https://ai-alignment.com/inaccessible-information-c749c6a88ce
-% https://www.lesswrong.com/posts/roA83jDvq7F2epnHK/better-priors-as-a-safety-problem
-% https://www.lesswrong.com/posts/SL9mKhgdmDKXmxwE4/learning-the-prior
-% https://www.lesswrong.com/posts/Tr7tAyt5zZpdTwTQK/the-solomonoff-prior-is-malign
-
-% https://en.wikipedia.org/wiki/Anthropic_Bias_(book)
